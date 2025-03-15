@@ -283,7 +283,7 @@ const Resume = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <motion.a
-            href="/your-resume.pdf"
+            href="/documents/Andrew_Parr_Resume_2025.pdf"
             download
             className="btn btn-primary inline-flex items-center px-8 py-4 rounded-full shadow-lg hover:shadow-xl"
             whileHover={{ scale: 1.05 }}

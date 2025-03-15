@@ -179,7 +179,10 @@ const Navbar = () => {
                   href={`#${item.to}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(item.to);
+                    setIsOpen(false);
+                    setTimeout(() => {
+                      scrollToSection(item.to);
+                    }, 10);
                   }}
                   className={`block py-3 px-4 rounded-lg transition-colors ${
                     activeSection === item.to
@@ -197,7 +200,10 @@ const Navbar = () => {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollToSection('contact');
+                  setIsOpen(false);
+                  setTimeout(() => {
+                    scrollToSection('contact');
+                  }, 10);
                 }}
                 className="block py-3 px-4 mt-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors text-center font-medium"
                 initial={{ opacity: 0, x: -20 }}
