@@ -1,0 +1,8 @@
+body, html, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  background: linear-gradient(to bottom right, #eef2ff, #ffffff) !important;
+  font-family: Arial, sans-serif !important;
+} 
