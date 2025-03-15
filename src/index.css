@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4F46E5; /* Indigo-600 */
+  --primary-dark: #4338CA; /* Indigo-700 */
+  --secondary: #8B5CF6; /* Violet-500 */
+  --accent: #F59E0B; /* Amber-500 */
+  --background: #F9FAFB;
+  --text: #1F2937;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  @apply bg-gradient-to-br from-indigo-50 to-white;
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom utility classes */
+.section-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+}
+
+.section-padding {
+  @apply py-24;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600;
+}
+
+.hover-lift {
+  @apply transform transition-transform duration-300 hover:-translate-y-1;
+}
+
+/* Theme colors */
+.theme-gradient {
+  @apply bg-gradient-to-br from-indigo-600 via-purple-600 to-violet-800;
+}
+
+.theme-border {
+  @apply border-indigo-600;
+}
+
+.theme-text {
+  @apply text-indigo-600;
+}
+
+.theme-bg-light {
+  @apply bg-indigo-50;
+}
+
+.theme-hover {
+  @apply hover:bg-indigo-700;
+}
+
+/* Section styles */
+section {
+  @apply w-full py-20 md:py-28;
+}
+
+.section-inner {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-indigo-100;
+}
+
+/* Button styles */
+.btn {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 shadow-md hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900 hover:from-amber-500 hover:to-amber-600 shadow-md hover:shadow-lg;
+}
+
+.btn-outline {
+  @apply border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white shadow-md hover:shadow-lg;
+}
+
+/* Animation utilities */
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-600 {
+  animation-delay: 600ms;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom section backgrounds */
+.about-bg {
+  @apply bg-gradient-to-br from-indigo-50 to-violet-50;
+}
+
+.resume-bg {
+  @apply bg-white;
+}
+
+.projects-bg {
+  @apply bg-gradient-to-br from-indigo-50 to-purple-50;
+}
+
+.contact-bg {
+  @apply bg-gradient-to-br from-violet-50 to-indigo-100;
+}
+
+/* Responsive container for all sections */
+.content-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+}
+
+/* Skill badge styling */
+.skill-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 border border-indigo-200 shadow-sm;
+}
+
+/* Timeline styling for resume */
+.timeline-item {
+  @apply relative pl-8 pb-8 border-l-2 border-indigo-200;
+}
+
+.timeline-dot {
+  @apply absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-indigo-600 shadow-md;
+}
+
+/* Project card styling */
+.project-card {
+  @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl border border-indigo-100;
+}
+
+/* Form input styling */
+.form-input {
+  @apply w-full px-4 py-3 rounded-lg border border-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-sm;
+}
+
+/* Glowing effect */
+.glow {
+  @apply relative;
+}
+
+.glow::after {
+  content: '';
+  @apply absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity duration-300 -z-10 blur-xl;
+}
+
+.glow:hover::after {
+  @apply opacity-70;
+}
+
+/* Animated background */
+.animated-bg {
+  @apply relative overflow-hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 animate-pulse;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-indigo-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-indigo-400;
+}
