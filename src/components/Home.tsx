@@ -44,7 +44,7 @@ const Home = () => {
             className="w-32 h-32 rounded-full border-4 border-white/30 mx-auto mb-8 overflow-hidden shadow-xl"
           >
             <img
-              src="/your-photo.jpg" // Add your photo here
+              src="/images/headshot.jpg" 
               alt="Profile"
               className="w-full h-full object-cover"
             />
@@ -57,7 +57,7 @@ const Home = () => {
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 200 }}
             >
-              [Your Name]
+              Andrew Parr
             </motion.span>
           </h1>
           
@@ -93,17 +93,6 @@ const Home = () => {
               Contact Me
             </motion.a>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
-          </div>
         </motion.div>
       </div>
 

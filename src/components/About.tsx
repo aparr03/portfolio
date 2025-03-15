@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const skills = [
-    'JavaScript', 'TypeScript', 'React', 'Node.js', 'Express', 
-    'HTML/CSS', 'Tailwind CSS', 'MongoDB', 'SQL', 'Git',
-    'Next.js', 'Redux', 'REST APIs', 'GraphQL', 'AWS'
+    'JavaScript', 'TypeScript', 'React', 'Node.js', 'Supabase', 'Vercel', 
+    'HTML/CSS', 'Tailwind CSS', 'SQL', 'Git',
+    'Next.js', 'REST APIs'
   ];
 
   return (
@@ -41,7 +41,7 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-indigo-100 to-violet-100 rounded-xl transform rotate-3"></div>
               <div className="absolute -inset-4 bg-white/50 rounded-xl transform -rotate-2"></div>
               <img 
-                src="/about-image.jpg" 
+                src="/images/headshot.jpg" 
                 alt="Professional headshot" 
                 className="relative z-10 rounded-lg shadow-xl w-full h-auto border-4 border-white"
               />
@@ -57,7 +57,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold text-gray-800">Hello, I'm <span className="text-indigo-600">[Your Name]</span></h3>
+            <h3 className="text-2xl font-semibold text-gray-800">Hello, I'm <span className="text-indigo-600">Andrew Parr</span></h3>
             <p className="text-gray-700 leading-relaxed">
               I'm a passionate full-stack developer with a strong focus on creating clean, efficient, and user-friendly applications. 
               With [X] years of experience in web development, I enjoy turning complex problems into simple, beautiful, and intuitive solutions.
@@ -75,12 +75,12 @@ const About = () => {
                 {skills.map((skill, index) => (
                   <motion.span
                     key={index}
-                    className="skill-badge"
+                    className="skill-badge transition-colors duration-200 hover:bg-indigo-600 hover:text-white"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 * index }}
-                    whileHover={{ scale: 1.05, backgroundColor: '#4F46E5', color: 'white' }}
+                    whileHover={{ scale: 1.05 }}
                   >
                     {skill}
                   </motion.span>

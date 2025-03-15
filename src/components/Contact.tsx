@@ -1,37 +1,65 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { supabase } from '../lib/supabase';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: '',
+    message: ''
+  });
+  
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    success: false,
+    error: false,
+    message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | 'success' | 'error'>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
+    setFormStatus({ submitting: true, success: false, error: false, message: 'Sending...' });
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
+      // Insert the message into your Supabase table
+      const { error } = await supabase
+        .from('messages')
+        .insert([
+          { 
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message
+          }
+        ]);
+
+      if (error) throw error;
+
+      // Success
+      setFormStatus({
+        submitting: false,
+        success: true,
+        error: false,
+        message: 'Message sent successfully! I\'ll get back to you soon.'
+      });
+      
+      // Reset form
       setFormData({ name: '', email: '', subject: '', message: '' });
+      
     } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus(null), 5000);
+      console.error('Error submitting form:', error);
+      setFormStatus({
+        submitting: false,
+        success: false,
+        error: true,
+        message: 'Failed to send message. Please try again.'
+      });
     }
   };
 
@@ -97,7 +125,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-gray-800">Email</h4>
-                    <a href="mailto:your.email@example.com" className="text-indigo-600 hover:text-indigo-800 hover:underline transition-colors">your.email@example.com</a>
+                    <a href="mailto:aparr3@hotmail.com" className="text-indigo-600 hover:text-indigo-800 hover:underline transition-colors">aparr3@hotmail.com</a>
                   </div>
                 </div>
 
@@ -110,7 +138,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-medium text-gray-800">Location</h4>
-                    <p className="text-gray-700">City, State, Country</p>
+                    <p className="text-gray-700">Michigan, USA</p>
                   </div>
                 </div>
               </div>
@@ -169,7 +197,7 @@ const Contact = () => {
             <div className="bg-white rounded-xl shadow-lg p-8 border border-indigo-100">
               <h3 className="text-2xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
               
-              {submitStatus === 'success' && (
+              {formStatus.success && (
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -179,12 +207,12 @@ const Contact = () => {
                     <svg className="h-5 w-5 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Thank you for your message! I'll get back to you soon.
+                    {formStatus.message}
                   </div>
                 </motion.div>
               )}
               
-              {submitStatus === 'error' && (
+              {formStatus.error && (
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -194,7 +222,7 @@ const Contact = () => {
                     <svg className="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
-                    There was an error sending your message. Please try again.
+                    {formStatus.message}
                   </div>
                 </motion.div>
               )}
@@ -270,16 +298,16 @@ const Contact = () => {
                 
                 <motion.button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={formStatus.submitting}
                   className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all duration-300 ${
-                    isSubmitting 
+                    formStatus.submitting 
                       ? 'bg-indigo-400 cursor-not-allowed' 
                       : 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 shadow-md hover:shadow-lg'
                   }`}
-                  whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                  whileHover={!formStatus.submitting ? { scale: 1.02 } : {}}
+                  whileTap={!formStatus.submitting ? { scale: 0.98 } : {}}
                 >
-                  {isSubmitting ? (
+                  {formStatus.submitting ? (
                     <div className="flex items-center justify-center">
                       <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
