@@ -131,7 +131,7 @@ const Navbar = () => {
                 {item.name}
                 {activeSection === item.to && (
                   <motion.div 
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-500"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-violet-600"
                     layoutId="activeSection"
                   />
                 )}
@@ -141,8 +141,8 @@ const Navbar = () => {
               onClick={toggleDarkMode}
               className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
                 scrolled 
-                  ? 'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600' 
-                  : 'bg-white text-blue-600 hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700'
+                  ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 dark:from-indigo-700 dark:to-violet-700 dark:hover:from-indigo-600 dark:hover:to-violet-600' 
+                  : 'bg-white text-indigo-600 hover:bg-indigo-50 dark:bg-gray-800 dark:text-indigo-400 dark:hover:bg-gray-700'
               }`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -230,7 +230,7 @@ const Navbar = () => {
                   }}
                   className={`block py-3 px-4 rounded-lg transition-colors ${
                     activeSection === item.to
-                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium'
+                      ? 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:bg-gradient-to-r dark:from-indigo-900/20 dark:to-violet-900/20 text-indigo-600 dark:text-indigo-400 font-medium'
                       : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
@@ -245,7 +245,7 @@ const Navbar = () => {
                   toggleDarkMode();
                   setIsOpen(false);
                 }}
-                className="block w-full py-3 px-4 mt-4 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors text-center font-medium flex items-center justify-center"
+                className="block w-full py-3 px-4 mt-4 bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-800 dark:bg-gradient-to-r dark:from-indigo-800 dark:to-violet-800 dark:text-white hover:from-indigo-100 hover:to-violet-100 dark:hover:from-indigo-700 dark:hover:to-violet-700 rounded-lg transition-colors text-center font-medium flex items-center justify-center"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.2, delay: (navItems.length + 1) * 0.1 }}
