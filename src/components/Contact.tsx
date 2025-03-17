@@ -4,6 +4,9 @@ import React from 'react';
 import { supabase } from '../lib/supabase';
 import emailjs from '@emailjs/browser';
 
+// Initialize EmailJS
+emailjs.init("UhgvWScf2NpFX_afI");
+
 const Contact = () => {
   const emailjsServiceId = 'service_tgk2v0u';
   const emailjsTemplateId = 'template_y1zl4lg';
@@ -165,7 +168,7 @@ const Contact = () => {
               <h3 className="text-2xl font-semibold text-gray-800 mb-6">Connect With Me</h3>
               <div className="flex space-x-4">
                 <motion.a
-                  href="https://github.com/AlexParrG" 
+                  href="https://github.com/aparr03" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-br from-gray-800 to-gray-900 text-white p-3 rounded-full shadow-md hover:shadow-lg transition-all"
@@ -177,7 +180,7 @@ const Contact = () => {
                   </svg>
                 </motion.a>
                 <motion.a
-                  href="https://linkedin.com/in/alexander-parr"
+                  href="https://linkedin.com/in/aparr03"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-3 rounded-full shadow-md hover:shadow-lg transition-all"
