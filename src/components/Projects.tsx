@@ -63,12 +63,12 @@ const Projects = () => {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="projects" className="projects-bg section-padding relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-indigo-100/50 to-transparent"></div>
-      <div className="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-purple-100/50 to-transparent"></div>
-      <div className="absolute top-1/4 right-10 w-64 h-64 bg-indigo-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-purple-300/10 rounded-full blur-3xl"></div>
+    <section id="projects" className="projects-bg section-padding relative overflow-hidden dark:bg-gray-900">
+      {/* Enhanced background styling */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/70 to-purple-50/70 dark:from-indigo-950/20 dark:to-purple-950/20 z-0 bg-animate-slow"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-5 z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-indigo-100/30 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-purple-100/30 to-transparent dark:from-purple-900/10 dark:to-transparent z-0"></div>
 
       <div className="content-container relative z-10">
         <motion.div
@@ -79,10 +79,10 @@ const Projects = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-2">
-            <span className="gradient-text">My Projects</span>
+            <span className="gradient-text dark:text-gray-100">My Projects</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-violet-600 mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Here are some of my recent projects. Each one was carefully crafted to solve specific problems and showcase different skills.
           </p>
         </motion.div>
@@ -95,8 +95,8 @@ const Projects = () => {
               onClick={() => setActiveFilter(filter.value)}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 shadow-md ${
                 activeFilter === filter.value
-                  ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white'
-                  : 'bg-white text-gray-800 hover:bg-gray-50 border border-gray-200'
+                  ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white dark:from-indigo-500 dark:to-violet-500'
+                  : 'bg-white text-gray-800 hover:bg-gray-50 border border-gray-200 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-700'
               }`}
               whileHover={{ scale: 1.05, boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}
               whileTap={{ scale: 0.95 }}
@@ -148,12 +148,12 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-              <div className="p-6 flex-grow flex flex-col bg-white">
-                <p className="text-gray-700 mb-4 flex-grow">{project.description}</p>
+              <div className="p-6 flex-grow flex flex-col bg-white dark:bg-gray-800">
+                <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{project.description}</p>
                 <div className="flex justify-between mt-auto">
                   <motion.a
                     href={project.demoLink}
-                    className="text-indigo-600 font-medium hover:text-indigo-800 transition-colors flex items-center"
+                    className="text-indigo-600 dark:text-indigo-400 font-medium hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors flex items-center"
                     whileHover={{ scale: 1.05, x: 3 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -164,7 +164,7 @@ const Projects = () => {
                   </motion.a>
                   <motion.a
                     href={project.codeLink}
-                    className="text-gray-700 font-medium hover:text-gray-900 transition-colors flex items-center"
+                    className="text-gray-700 dark:text-gray-400 font-medium hover:text-gray-900 dark:hover:text-gray-200 transition-colors flex items-center"
                     whileHover={{ scale: 1.05, x: 3 }}
                     whileTap={{ scale: 0.95 }}
                   >

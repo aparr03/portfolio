@@ -5,6 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [darkMode, setDarkMode] = useState(false);
 
   const navItems = [
     { name: 'Home', to: 'home' },
@@ -15,6 +16,25 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
+    // Check for user's preference
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+    
+    // Check if there's a saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode) {
+      const isDark = savedMode === 'dark';
+      setDarkMode(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+    
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
       if (isScrolled !== scrolled) {
@@ -39,6 +59,19 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled, navItems]);
 
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    
+    if (newMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'light');
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -57,7 +90,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="section-container">
@@ -72,7 +105,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className={scrolled ? 'gradient-text' : 'text-white'}>
+            <span className={scrolled ? 'gradient-text' : 'text-white dark:text-gray-100'}>
               Portfolio
             </span>
           </motion.a>
@@ -88,7 +121,7 @@ const Navbar = () => {
                   scrollToSection(item.to);
                 }}
                 className={`font-medium transition-all duration-300 relative ${
-                  scrolled ? 'text-gray-800' : 'text-white'
+                  scrolled ? 'text-gray-800 dark:text-gray-200' : 'text-white'
                 } ${activeSection === item.to ? 'font-semibold' : ''}`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -98,31 +131,42 @@ const Navbar = () => {
                 {item.name}
                 {activeSection === item.to && (
                   <motion.div 
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600"
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-500"
                     layoutId="activeSection"
                   />
                 )}
               </motion.a>
             ))}
-            <motion.a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
-              className={`px-5 py-2 rounded-full font-medium transition-all duration-300 ${
+            <motion.button
+              onClick={toggleDarkMode}
+              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
                 scrolled 
-                  ? 'bg-blue-600 text-white hover:bg-blue-700' 
-                  : 'bg-white text-blue-600 hover:bg-blue-50'
+                  ? 'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600' 
+                  : 'bg-white text-blue-600 hover:bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700'
               }`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              Hire Me
-            </motion.a>
+              {darkMode ? (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  Light
+                </>
+              ) : (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                  Dark
+                </>
+              )}
+            </motion.button>
           </div>
 
           {/* Mobile menu button */}
@@ -130,7 +174,7 @@ const Navbar = () => {
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md ${
-                scrolled ? 'text-gray-900 hover:bg-gray-100' : 'text-white hover:bg-white/10'
+                scrolled ? 'text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800' : 'text-white hover:bg-white/10'
               }`}
               whileTap={{ scale: 0.9 }}
             >
@@ -170,7 +214,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/95 backdrop-blur-md shadow-lg"
+            className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
           >
             <div className="section-container py-4 space-y-1">
               {navItems.map((item, index) => (
@@ -186,8 +230,8 @@ const Navbar = () => {
                   }}
                   className={`block py-3 px-4 rounded-lg transition-colors ${
                     activeSection === item.to
-                      ? 'bg-blue-50 text-blue-600 font-medium'
-                      : 'text-gray-800 hover:bg-gray-50'
+                      ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium'
+                      : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -196,22 +240,32 @@ const Navbar = () => {
                   {item.name}
                 </motion.a>
               ))}
-              <motion.a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
+              <motion.button
+                onClick={() => {
+                  toggleDarkMode();
                   setIsOpen(false);
-                  setTimeout(() => {
-                    scrollToSection('contact');
-                  }, 10);
                 }}
-                className="block py-3 px-4 mt-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors text-center font-medium"
+                className="block w-full py-3 px-4 mt-4 bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors text-center font-medium flex items-center justify-center"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2, delay: navItems.length * 0.1 }}
+                transition={{ duration: 0.2, delay: (navItems.length + 1) * 0.1 }}
               >
-                Hire Me
-              </motion.a>
+                {darkMode ? (
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Switch to Light Mode
+                  </>
+                ) : (
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    Switch to Dark Mode
+                  </>
+                )}
+              </motion.button>
             </div>
           </motion.div>
         )}

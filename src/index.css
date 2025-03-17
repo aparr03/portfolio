@@ -13,6 +13,16 @@
   scroll-behavior: smooth;
 }
 
+/* Dark mode variables */
+.dark {
+  --primary: #6366F1; /* Slightly lighter indigo for dark mode */
+  --primary-dark: #4F46E5;
+  --secondary: #A78BFA; /* Slightly lighter violet for dark mode */
+  --accent: #FBBF24; /* Slightly lighter amber for dark mode */
+  --background: #111827; /* Dark background */
+  --text: #F9FAFB; /* Light text for dark mode */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -31,8 +41,14 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  @apply bg-gradient-to-br from-indigo-50 to-white;
+  background-color: var(--background);
   color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode specific background */
+body:not(.dark) {
+  @apply bg-gradient-to-br from-indigo-50 to-white;
 }
 
 #root {
@@ -55,6 +71,11 @@ body {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600;
 }
 
+/* Dark mode for gradient text */
+.dark .gradient-text {
+  @apply bg-gradient-to-r from-indigo-400 to-violet-400;
+}
+
 .hover-lift {
   @apply transform transition-transform duration-300 hover:-translate-y-1;
 }
@@ -64,25 +85,33 @@ body {
   @apply bg-gradient-to-br from-indigo-600 via-purple-600 to-violet-800;
 }
 
+.dark .theme-gradient {
+  @apply bg-gradient-to-br from-indigo-500 via-purple-500 to-violet-700;
+}
+
 .theme-border {
-  @apply border-indigo-600;
+  @apply border-indigo-600 dark:border-indigo-500;
 }
 
 .theme-text {
-  @apply text-indigo-600;
+  @apply text-indigo-600 dark:text-indigo-400;
 }
 
 .theme-bg-light {
-  @apply bg-indigo-50;
+  @apply bg-indigo-50 dark:bg-indigo-900/30;
 }
 
 .theme-hover {
-  @apply hover:bg-indigo-700;
+  @apply hover:bg-indigo-700 dark:hover:bg-indigo-600;
 }
 
 /* Section styles */
 section {
-  @apply w-full py-20 md:py-28;
+  @apply w-full py-20 md:py-28 transition-colors duration-300;
+}
+
+.dark section {
+  @apply bg-gray-900;
 }
 
 .section-inner {
@@ -91,7 +120,7 @@ section {
 
 /* Card styles */
 .card {
-  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-indigo-100;
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl border border-indigo-100 dark:border-gray-700;
 }
 
 /* Button styles */
@@ -100,15 +129,15 @@ section {
 }
 
 .btn-primary {
-  @apply bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 shadow-md hover:shadow-lg;
+  @apply bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 shadow-md hover:shadow-lg dark:from-indigo-500 dark:to-violet-500 dark:hover:from-indigo-600 dark:hover:to-violet-600;
 }
 
 .btn-secondary {
-  @apply bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900 hover:from-amber-500 hover:to-amber-600 shadow-md hover:shadow-lg;
+  @apply bg-gradient-to-r from-amber-400 to-amber-500 text-gray-900 hover:from-amber-500 hover:to-amber-600 shadow-md hover:shadow-lg dark:text-gray-800;
 }
 
 .btn-outline {
-  @apply border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white shadow-md hover:shadow-lg;
+  @apply border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white shadow-md hover:shadow-lg dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-500;
 }
 
 /* Animation utilities */
@@ -135,19 +164,56 @@ section {
 
 /* Custom section backgrounds */
 .about-bg {
-  @apply bg-gradient-to-br from-indigo-50 to-violet-50;
+  @apply bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-gray-900 dark:to-gray-800;
 }
 
 .resume-bg {
-  @apply bg-white;
+  @apply bg-white dark:bg-gray-900;
 }
 
 .projects-bg {
-  @apply bg-gradient-to-br from-indigo-50 to-purple-50;
+  @apply bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-900 dark:to-gray-800;
 }
 
 .contact-bg {
-  @apply bg-gradient-to-br from-violet-50 to-indigo-100;
+  @apply bg-gradient-to-br from-violet-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800;
+}
+
+/* Grid pattern background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+}
+
+/* Animated background effect */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animate {
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+.bg-animate-slow {
+  background-size: 200% 200%;
+  animation: gradientMove 25s ease infinite;
 }
 
 /* Responsive container for all sections */
@@ -157,26 +223,26 @@ section {
 
 /* Skill badge styling */
 .skill-badge {
-  @apply px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 border border-indigo-200 shadow-sm;
+  @apply px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 border border-indigo-200 shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300 dark:border-indigo-800;
 }
 
 /* Timeline styling for resume */
 .timeline-item {
-  @apply relative pl-8 pb-8 border-l-2 border-indigo-200;
+  @apply relative pl-8 pb-8 border-l-2 border-indigo-200 dark:border-indigo-800;
 }
 
 .timeline-dot {
-  @apply absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-indigo-600 shadow-md;
+  @apply absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-indigo-600 shadow-md dark:bg-indigo-500;
 }
 
 /* Project card styling */
 .project-card {
-  @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl border border-indigo-100;
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl border border-indigo-100 dark:border-gray-700;
 }
 
 /* Form input styling */
 .form-input {
-  @apply w-full px-4 py-3 rounded-lg border border-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-sm;
+  @apply w-full px-4 py-3 rounded-lg border border-indigo-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:focus:ring-indigo-400;
 }
 
 /* Glowing effect */
@@ -200,7 +266,7 @@ section {
 
 .animated-bg::before {
   content: '';
-  @apply absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 animate-pulse;
+  @apply absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 animate-pulse dark:from-indigo-600/5 dark:to-purple-600/5;
 }
 
 /* Custom scrollbar */
@@ -209,13 +275,91 @@ section {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-indigo-300 rounded-full;
+  @apply bg-indigo-300 dark:bg-indigo-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-indigo-400;
+  @apply bg-indigo-400 dark:bg-indigo-600;
+}
+
+/* Additional dark mode specific styles */
+.dark section {
+  background-color: #111827;
+}
+
+.dark .bg-white {
+  background-color: #1F2937;
+  color: #F9FAFB;
+}
+
+.dark .text-gray-700, 
+.dark .text-gray-800, 
+.dark .text-gray-900 {
+  color: #E5E7EB;
+}
+
+.dark .border-indigo-50,
+.dark .border-indigo-100 {
+  border-color: #374151;
+}
+
+.dark .shadow-md,
+.dark .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgba(99, 102, 241, 0.2);
+}
+
+.dark .text-indigo-600,
+.dark .text-indigo-700 {
+  color: #A5B4FC;
+}
+
+/* Additional navbar-specific dark mode styles */
+.dark .bg-white\/90 {
+  background-color: rgba(31, 41, 55, 0.9); /* dark:bg-gray-800/90 equivalent */
+}
+
+.dark .backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+/* Mobile menu dark mode */
+.dark .bg-white\/95 {
+  background-color: rgba(31, 41, 55, 0.95);
+}
+
+.dark .bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.dark .text-blue-600 {
+  color: #3B82F6;
+}
+
+/* Hero section dark mode */
+.dark .from-indigo-100\/50 {
+  --tw-gradient-from: rgba(224, 231, 255, 0.05);
+}
+
+.dark .to-transparent {
+  --tw-gradient-to: transparent;
+}
+
+.dark .bg-indigo-300\/10 {
+  background-color: rgba(165, 180, 252, 0.05);
+}
+
+.dark .bg-violet-300\/10 {
+  background-color: rgba(196, 181, 253, 0.05);
+}
+
+.dark .bg-indigo-400\/20 {
+  background-color: rgba(129, 140, 248, 0.1);
 }

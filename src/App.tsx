@@ -20,7 +20,7 @@ function App() {
           <Contact />
         </div>
       </main>
-      <footer className="bg-gradient-to-r from-indigo-900 to-violet-900 text-white py-12 mt-auto">
+      <footer className="bg-gradient-to-r from-indigo-900 to-violet-900 dark:from-indigo-950 dark:to-violet-950 text-white py-12 mt-auto">
         <div className="section-container text-center">
           <p className="text-lg mb-4">© {new Date().getFullYear()} Andrew Parr</p>
           <p>All rights reserved</p>

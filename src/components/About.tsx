@@ -8,14 +8,14 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="about-bg section-padding relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/3 left-1/4 w-4 h-4 bg-indigo-400 rounded-full animate-float"></div>
-      <div className="absolute top-2/3 right-1/3 w-3 h-3 bg-purple-400 rounded-full animate-float animate-delay-300"></div>
-      <div className="absolute bottom-1/4 left-1/3 w-6 h-6 bg-violet-400 rounded-full animate-float animate-delay-600"></div>
-
+    <section id="about" className="about-bg section-padding relative overflow-hidden dark:bg-gray-900">
+      {/* Enhanced background styling */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/70 to-violet-50/70 dark:from-indigo-950/20 dark:to-violet-950/20 z-0 bg-animate-slow"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-5 z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-indigo-100/30 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-violet-100/30 to-transparent dark:from-violet-900/10 dark:to-transparent z-0"></div>
+      
+      {/* Content container */}
       <div className="content-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,7 +25,7 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold mb-2">
-            <span className="gradient-text">About Me</span>
+            <span className="gradient-text dark:text-gray-100">About Me</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-violet-600 mx-auto mb-8 rounded-full"></div>
         </motion.div>
@@ -38,12 +38,12 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-indigo-100 to-violet-100 rounded-xl transform rotate-3"></div>
-              <div className="absolute -inset-4 bg-white/50 rounded-xl transform -rotate-2"></div>
+              <div className="absolute -inset-4 bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/50 dark:to-violet-900/50 rounded-xl transform rotate-3"></div>
+              <div className="absolute -inset-4 bg-white/50 dark:bg-gray-800/50 rounded-xl transform -rotate-2"></div>
               <img 
                 src="/images/headshot.jpg" 
                 alt="Professional headshot" 
-                className="relative z-10 rounded-lg shadow-xl w-full h-auto border-4 border-white"
+                className="relative z-10 rounded-lg shadow-xl w-full h-auto border-4 border-white dark:border-gray-700"
               />
               <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-xl transform rotate-12 opacity-80"></div>
               <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-500 rounded-full transform opacity-80"></div>
@@ -57,25 +57,24 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold text-gray-800">Hello, I'm <span className="text-indigo-600">Andrew Parr</span></h3>
-            <p className="text-gray-700 leading-relaxed">
-              I'm a passionate full-stack developer with a strong focus on creating clean, efficient, and user-friendly applications. 
-              With [X] years of experience in web development, I enjoy turning complex problems into simple, beautiful, and intuitive solutions.
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Hello, I'm <span className="text-indigo-600 dark:text-indigo-400">Andrew Parr</span></h3>
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              I'm a passionate full-stack developer with a strong focus on building clean, efficient, and user-friendly applications. With a Bachelor's degree in Computer Science and a Minor in IT, I have 3+ years of experience working in development, combining my technical expertise with creative problem-solving.
             </p>
-            <p className="text-gray-700 leading-relaxed">
-              My approach to development combines technical expertise with creative problem-solving. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends and best practices.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            My journey in software development has been shaped by hands-on experience in web development, systems analysis, and database management. I have a keen interest in modern front-end frameworks, cloud technologies, and optimizing application performance. Whether it's crafting responsive user interfaces, managing scalable backends, or integrating databases like Supabase, I thrive on turning complex problems into simple, beautiful, and intuitive solutions.
             </p>
-            <p className="text-gray-700 leading-relaxed">
-              When I'm not coding, you can find me [your hobbies/interests]. I'm always open to new opportunities and challenges that allow me to grow as a developer.
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            I'm actively seeking opportunities in web development and software engineering, where I can apply my expertise while continuing to expand my knowledge. If you're looking for a dedicated and versatile developer, let's connect!
             </p>
 
             <div>
-              <h4 className="text-xl font-semibold text-gray-800 mb-4">My <span className="text-indigo-600">Skills</span></h4>
+              <h4 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">My <span className="text-indigo-600 dark:text-indigo-400">Skills</span></h4>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
                   <motion.span
                     key={index}
-                    className="skill-badge transition-colors duration-200 hover:bg-indigo-600 hover:text-white"
+                    className="skill-badge transition-colors duration-200 hover:bg-indigo-600 hover:text-white dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-indigo-600 dark:hover:text-white"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

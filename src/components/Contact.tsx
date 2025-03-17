@@ -135,29 +135,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="contact-bg section-padding relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-indigo-100/50 to-transparent"></div>
-      <div className="absolute -top-10 right-0 w-72 h-72 bg-indigo-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-300/10 rounded-full blur-3xl"></div>
-      
-      {/* Animated particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(10)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full bg-indigo-400/20"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 8 + 4}px`,
-              height: `${Math.random() * 8 + 4}px`,
-              animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          />
-        ))}
-      </div>
+    <section id="contact" className="contact-bg section-padding relative overflow-hidden dark:bg-gray-900">
+      {/* Enhanced background styling */}
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-50/70 to-indigo-100/70 dark:from-violet-950/20 dark:to-indigo-950/20 z-0 bg-animate-slow"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-5 z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-violet-100/30 to-transparent dark:from-violet-900/10 dark:to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-indigo-100/30 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
 
       <div className="content-container relative z-10">
         <motion.div
@@ -168,10 +151,10 @@ const Contact = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-2">
-            <span className="gradient-text">Get In Touch</span>
+            <span className="gradient-text dark:text-gray-100">Get In Touch</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-violet-600 mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Interested in my work or want to discuss potential opportunities? Feel free to reach out!
           </p>
         </motion.div>
@@ -185,8 +168,8 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-indigo-100 animated-bg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-indigo-100 dark:border-gray-700 animated-bg">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-gradient-to-br from-indigo-500 to-violet-500 p-3 rounded-full text-white shadow-md">
@@ -195,8 +178,8 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-lg font-medium text-gray-800">Email</h4>
-                    <a href="mailto:aparr3@hotmail.com" className="text-indigo-600 hover:text-indigo-800 hover:underline transition-colors">aparr3@hotmail.com</a>
+                    <h4 className="text-lg font-medium text-gray-800 dark:text-gray-200">Email</h4>
+                    <a href="mailto:aparr3@hotmail.com" className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 hover:underline transition-colors">aparr3@hotmail.com</a>
                   </div>
                 </div>
 
@@ -208,15 +191,15 @@ const Contact = () => {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="text-lg font-medium text-gray-800">Location</h4>
-                    <p className="text-gray-700">Michigan, USA</p>
+                    <h4 className="text-lg font-medium text-gray-800 dark:text-gray-200">Location</h4>
+                    <p className="text-gray-700 dark:text-gray-300">Michigan, USA</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-indigo-100 animated-bg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Connect With Me</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-indigo-100 dark:border-gray-700 animated-bg">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Connect With Me</h3>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
                 <motion.a
                   href="https://github.com/aparr03" 
@@ -293,20 +276,20 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white rounded-xl shadow-lg p-8 border border-indigo-100">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">Send Me a Message</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-indigo-100 dark:border-gray-700">
+              <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Send Me a Message</h3>
               
               {formStatus.success && (
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 text-green-800 rounded-lg border border-green-200"
+                  className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 text-green-800 dark:text-green-300 rounded-lg border border-green-200 dark:border-green-800"
                 >
                   <div className="flex items-center">
-                    <svg className="h-5 w-5 mr-2 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 mr-2 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    {formStatus.message}
+                    <span>{formStatus.message}</span>
                   </div>
                 </motion.div>
               )}
@@ -315,72 +298,67 @@ const Contact = () => {
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-6 p-4 bg-gradient-to-r from-red-50 to-rose-50 text-red-800 rounded-lg border border-red-200"
+                  className="mb-6 p-4 bg-gradient-to-r from-red-50 to-rose-50 dark:from-red-900/30 dark:to-rose-900/30 text-red-800 dark:text-red-300 rounded-lg border border-red-200 dark:border-red-800"
                 >
                   <div className="flex items-center">
-                    <svg className="h-5 w-5 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 mr-2 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
-                    {formStatus.message}
+                    <span>{formStatus.message}</span>
                   </div>
                 </motion.div>
               )}
               
               <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm transition-colors"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm transition-colors"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Your Name
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    Subject
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="John Doe"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                    Subject
-                  </label>
-                  <select
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="form-input"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="Job Opportunity">Job Opportunity</option>
-                    <option value="Project Inquiry">Project Inquiry</option>
-                    <option value="Collaboration">Collaboration</option>
-                    <option value="Other">Other</option>
-                  </select>
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm transition-colors"
+                    placeholder="How can I help you?"
+                  />
                 </div>
-                
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Message
                   </label>
                   <textarea
@@ -390,7 +368,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="form-input"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-sm transition-colors"
                     placeholder="Your message here..."
                   ></textarea>
                 </div>
@@ -400,7 +378,7 @@ const Contact = () => {
                   disabled={formStatus.submitting}
                   className={`w-full py-3 px-6 rounded-lg font-medium text-white transition-all duration-300 ${
                     formStatus.submitting 
-                      ? 'bg-indigo-400 cursor-not-allowed' 
+                      ? 'bg-indigo-400 dark:bg-indigo-500/60 cursor-not-allowed' 
                       : 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 shadow-md hover:shadow-lg'
                   }`}
                   whileHover={!formStatus.submitting ? { scale: 1.02 } : {}}
@@ -408,13 +386,20 @@ const Contact = () => {
                 >
                   {formStatus.submitting ? (
                     <div className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
                       Sending...
                     </div>
-                  ) : 'Send Message'}
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      Send Message
+                    </div>
+                  )}
                 </motion.button>
               </form>
             </div>
