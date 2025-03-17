@@ -57,7 +57,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Hello, I'm <span className="text-indigo-600 dark:text-indigo-400">Andrew Parr</span></h3>
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Hello, I'm <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-400 dark:to-violet-400">Andrew Parr</span></h3>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               I'm a passionate full-stack developer with a strong focus on building clean, efficient, and user-friendly applications. With a Bachelor's degree in Computer Science and a Minor in IT, I have 3+ years of experience working in development, combining my technical expertise with creative problem-solving.
             </p>

@@ -16,7 +16,7 @@ const Resume = () => {
         'Developed strong problem-solving skills, handling over 4000 tickets with a roughly 83% closed-on-first-contact rate',
         'Gained experience troubleshooting software and writing technical documentation for internal use'
       ],
-      color: 'from-indigo-500 to-violet-500'
+      color: 'from-purple-500 to-violet-500'
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ const Resume = () => {
         'Utilized Asana to track, assign, and manage tickets within the system',
         'Worked in customer support and data entry, creating accounts for customers, and importing info'
       ],
-      color: 'from-blue-500 to-indigo-500'
+      color: 'from-violet-500 to-blue-500'
     }
   ];
 
@@ -44,7 +44,7 @@ const Resume = () => {
     },
     {
       id: 2,
-      degree: 'Bachelor of Science in Computer Science',
+      degree: 'Partial College Towards Bachelors of Science',
       institution: 'St. Clair County Community College',
       period: '2018 - 2022',
       description: 'Completed 54 credits accumulating a GPA of 3.08',
@@ -57,7 +57,7 @@ const Resume = () => {
       institution: 'St. Clair High School',
       period: '2017 - 2021',
       description: 'Graduated Summa Cum Laude with a GPA of 3.78',
-      courses: ['Placeholder', 'Placeholder', 'Placeholder'],
+      courses: [],
       color: 'from-violet-500 to-purple-500'      
     }
   ];
@@ -69,7 +69,8 @@ const Resume = () => {
       issuer: 'Microsoft',
       date: '2022',
       credentialId: 'DE7FC6480533A3F9',
-      color: 'from-amber-500 to-orange-500'
+      color: 'from-amber-500 to-orange-500',
+      credlyUrl: 'https://www.credly.com/badges/e6f0302f-4a6d-41cf-98fe-870ec9416843/public_url'
     },
     {
       id: 2,
@@ -77,7 +78,8 @@ const Resume = () => {
       issuer: 'Microsoft',
       date: '2023',
       credentialId: '801EC8FD78D3937B',
-      color: 'from-blue-500 to-cyan-500'
+      color: 'from-blue-500 to-cyan-500',
+      credlyUrl: 'https://www.credly.com/badges/158b07be-9ae5-4736-851b-82b65fe32dcf/public_url'
     }
   ];
 
@@ -212,14 +214,6 @@ const Resume = () => {
                   </div>
                   <h4 className="text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-4">{edu.institution}</h4>
                   <p className="text-gray-700 dark:text-gray-400 mb-4">{edu.description}</p>
-                  <h5 className="text-sm font-semibold text-gray-800 dark:text-gray-300 mb-2">Relevant Courses:</h5>
-                  <div className="flex flex-wrap gap-2">
-                    {edu.courses.map((course, i) => (
-                      <span key={i} className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm rounded-full border border-indigo-100 dark:border-indigo-800">
-                        {course}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -248,6 +242,18 @@ const Resume = () => {
                 <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${cert.color}`}></div>
                 <div className="pl-4 flex-1">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{cert.name}</h3>
+                  <a 
+                    href={cert.credlyUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-200 inline-flex items-center"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.102-1.101" />
+                    </svg>
+                    Verify on Credly
+                  </a>
                 </div>
                 <div className="pl-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
                   <div className="flex justify-between items-center">
