@@ -27,10 +27,7 @@ const Navbar = () => {
         document.documentElement.classList.remove('dark');
       }
     } else {
-      // If no saved preference, check system preference
-      const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      // If system prefers dark mode or no preference, use dark mode (default to dark)
+      // If no saved preference, default to dark mode
       setDarkMode(true);
       document.documentElement.classList.add('dark');
       localStorage.setItem('darkMode', 'dark');
