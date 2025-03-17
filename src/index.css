@@ -162,6 +162,26 @@ section {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Pulse animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /* Custom section backgrounds */
 .about-bg {
   @apply bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-gray-900 dark:to-gray-800;
