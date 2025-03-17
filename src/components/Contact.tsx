@@ -172,7 +172,7 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-violet-600 mx-auto mb-8 rounded-full"></div>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+            Interested in my work or want to discuss potential opportunities? Feel free to reach out!
           </p>
         </motion.div>
 
