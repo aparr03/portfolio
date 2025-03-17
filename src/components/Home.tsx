@@ -78,7 +78,7 @@ const Home = () => {
           >
             <motion.a
               href="#projects"
-              className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 px-8 py-4 rounded-full font-semibold hover:from-yellow-300 hover:to-yellow-400 transform hover:-translate-y-1 transition duration-300 shadow-lg hover:shadow-xl w-48 text-center"
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transform hover:-translate-y-1 transition duration-300 shadow-lg hover:shadow-xl w-48 text-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

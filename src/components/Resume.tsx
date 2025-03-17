@@ -66,37 +66,28 @@ const Resume = () => {
     {
       id: 1,
       name: 'AZ-900: Azure Fundamentals',
-      issuer: 'Microsoft Learn',
+      issuer: 'Microsoft',
       date: '2022',
-      credentialId: '',
+      credentialId: 'DE7FC6480533A3F9',
       color: 'from-amber-500 to-orange-500'
     },
     {
       id: 2,
-      name: 'Professional Frontend Developer',
-      issuer: 'Frontend Masters',
-      date: '2021',
-      credentialId: 'FM-PFD-67890',
+      name: 'SC-900: Microsoft Security, Compliance, and Identity Fundamentals',
+      issuer: 'Microsoft',
+      date: '2023',
+      credentialId: '801EC8FD78D3937B',
       color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 3,
-      name: 'React Advanced Concepts',
-      issuer: 'React Training',
-      date: '2020',
-      credentialId: 'RT-RAC-54321',
-      color: 'from-teal-500 to-emerald-500'
     }
   ];
 
   return (
-    <section id="resume" className="resume-bg section-padding relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-300/10 rounded-full blur-3xl"></div>
-      <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-indigo-400 rounded-full animate-float"></div>
-      <div className="absolute top-2/3 left-1/3 w-3 h-3 bg-purple-400 rounded-full animate-float animate-delay-300"></div>
-      <div className="absolute bottom-1/4 right-1/3 w-6 h-6 bg-violet-400 rounded-full animate-float animate-delay-600"></div>
+    <section id="resume" className="resume-bg section-padding relative overflow-hidden dark:bg-gray-900">
+      {/* Enhanced background styling */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/70 to-indigo-50/50 dark:from-gray-900/90 dark:to-indigo-950/20 z-0 bg-animate-slow"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3 z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-indigo-100/20 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-violet-100/20 to-transparent dark:from-violet-900/10 dark:to-transparent z-0"></div>
 
       <div className="content-container relative z-10">
         <motion.div
@@ -107,10 +98,10 @@ const Resume = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold mb-2">
-            <span className="gradient-text">My Resume</span>
+            <span className="gradient-text dark:text-gray-100">My Resume</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-violet-600 mx-auto mb-8 rounded-full"></div>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             My professional journey and qualifications that have shaped my career in web development.
           </p>
         </motion.div>
@@ -124,7 +115,7 @@ const Resume = () => {
               className={`px-6 py-3 text-sm font-medium rounded-l-lg transition-all duration-300 ${
                 activeTab === 'experience'
                   ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
               }`}
             >
               Experience
@@ -135,7 +126,7 @@ const Resume = () => {
               className={`px-6 py-3 text-sm font-medium transition-all duration-300 ${
                 activeTab === 'education'
                   ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
               }`}
             >
               Education
@@ -146,7 +137,7 @@ const Resume = () => {
               className={`px-6 py-3 text-sm font-medium rounded-r-lg transition-all duration-300 ${
                 activeTab === 'certifications'
                   ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md'
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
               }`}
             >
               Certifications
@@ -173,18 +164,18 @@ const Resume = () => {
                 className="timeline-item"
               >
                 <div className={`timeline-dot bg-gradient-to-br ${job.color}`}></div>
-                <div className="bg-white p-6 rounded-lg shadow-md ml-4 border border-indigo-50 hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md ml-4 border border-indigo-50 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">{job.title}</h3>
                     <span className={`text-sm font-medium text-white bg-gradient-to-r ${job.color} px-3 py-1 rounded-full shadow-sm mt-2 md:mt-0`}>
                       {job.period}
                     </span>
                   </div>
-                  <h4 className="text-lg font-medium text-indigo-600 mb-4">{job.company}</h4>
-                  <h5 className="text-sm font-semibold text-gray-800 mb-2">Key Achievements:</h5>
+                  <h4 className="text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-4">{job.company}</h4>
+                  <h5 className="text-sm font-semibold text-gray-800 dark:text-gray-300 mb-2">Key Achievements:</h5>
                   <ul className="list-disc pl-5 space-y-1">
                     {job.achievements.map((achievement, i) => (
-                      <li key={i} className="text-gray-700">{achievement}</li>
+                      <li key={i} className="text-gray-700 dark:text-gray-400">{achievement}</li>
                     ))}
                   </ul>
                 </div>
@@ -212,19 +203,19 @@ const Resume = () => {
                 className="timeline-item"
               >
                 <div className={`timeline-dot bg-gradient-to-br ${edu.color}`}></div>
-                <div className="bg-white p-6 rounded-lg shadow-md ml-4 border border-indigo-50 hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md ml-4 border border-indigo-50 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">{edu.degree}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">{edu.degree}</h3>
                     <span className={`text-sm font-medium text-white bg-gradient-to-r ${edu.color} px-3 py-1 rounded-full shadow-sm mt-2 md:mt-0`}>
                       {edu.period}
                     </span>
                   </div>
-                  <h4 className="text-lg font-medium text-indigo-600 mb-4">{edu.institution}</h4>
-                  <p className="text-gray-700 mb-4">{edu.description}</p>
-                  <h5 className="text-sm font-semibold text-gray-800 mb-2">Relevant Courses:</h5>
+                  <h4 className="text-lg font-medium text-indigo-600 dark:text-indigo-400 mb-4">{edu.institution}</h4>
+                  <p className="text-gray-700 dark:text-gray-400 mb-4">{edu.description}</p>
+                  <h5 className="text-sm font-semibold text-gray-800 dark:text-gray-300 mb-2">Relevant Courses:</h5>
                   <div className="flex flex-wrap gap-2">
                     {edu.courses.map((course, i) => (
-                      <span key={i} className="px-3 py-1 bg-indigo-50 text-indigo-700 text-sm rounded-full border border-indigo-100">
+                      <span key={i} className="px-3 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm rounded-full border border-indigo-100 dark:border-indigo-800">
                         {course}
                       </span>
                     ))}
@@ -242,7 +233,7 @@ const Resume = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
           >
             {certifications.map((cert, index) => (
               <motion.div
@@ -251,16 +242,17 @@ const Resume = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white p-6 rounded-lg shadow-md border border-indigo-50 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden"
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-indigo-50 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden flex flex-col h-full"
                 whileHover={{ y: -5 }}
               >
                 <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${cert.color}`}></div>
-                <div className="pl-4">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{cert.name}</h3>
-                  <p className="text-gray-700 mb-4">Issued by {cert.issuer}</p>
+                <div className="pl-4 flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{cert.name}</h3>
+                </div>
+                <div className="pl-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-indigo-600 font-medium">Issued: {cert.date}</span>
-                    <span className="text-xs text-gray-500">ID: {cert.credentialId}</span>
+                    <span className="text-sm text-gray-700 dark:text-gray-400">Issued by {cert.issuer} in {cert.date}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-500">ID: {cert.credentialId}</span>
                   </div>
                 </div>
               </motion.div>
@@ -276,18 +268,16 @@ const Resume = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <motion.a
-            href="/documents/Parr_Resume_Portfolio.pdf"
+          <a
+            href="/alex-parr-resume.pdf"
             download
-            className="btn btn-primary inline-flex items-center px-8 py-4 rounded-full shadow-lg hover:shadow-xl"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
             Download Resume
-          </motion.a>
+          </a>
         </motion.div>
       </div>
     </section>
