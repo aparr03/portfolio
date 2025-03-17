@@ -272,7 +272,7 @@ section {
 
 .glow::after {
   content: '';
-  @apply absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity duration-300 -z-10 blur-xl;
+  @apply absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity duration-100 -z-10 blur-xl;
 }
 
 .glow:hover::after {

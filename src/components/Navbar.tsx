@@ -93,22 +93,7 @@ const Navbar = () => {
     >
       <div className="section-container">
         <div className="flex justify-between items-center">
-          <motion.a 
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('home');
-            }}
-            className="text-2xl font-bold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className={scrolled ? 'gradient-text' : 'text-white dark:text-gray-100'}>
-              Portfolio
-            </span>
-          </motion.a>
-
-          {/* Desktop menu */}
+          {/* Desktop menu - moved to the left */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <motion.a
@@ -135,71 +120,94 @@ const Navbar = () => {
                 )}
               </motion.a>
             ))}
-            <motion.button
-              onClick={toggleDarkMode}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
-                scrolled 
-                  ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 dark:from-indigo-700 dark:to-violet-700 dark:hover:from-indigo-600 dark:hover:to-violet-600' 
-                  : 'bg-white text-indigo-600 hover:bg-indigo-50 dark:bg-gray-800 dark:text-indigo-400 dark:hover:bg-gray-700'
-              }`}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-            >
-              {darkMode ? (
-                <>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                  Light
-                </>
-              ) : (
-                <>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                  </svg>
-                  Dark
-                </>
-              )}
-            </motion.button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <motion.button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md ${
-                scrolled ? 'text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800' : 'text-white hover:bg-white/10'
-              }`}
-              whileTap={{ scale: 0.9 }}
+          {/* Right side content - logo and dark mode toggle */}
+          <div className="flex items-center space-x-4">
+            {/* Logo/brand */}
+            <motion.a 
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('home');
+              }}
+              className="text-2xl font-bold flex items-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+              
+            </motion.a>
+
+            {/* Dark mode toggle button */}
+            <div className="hidden md:block">
+              <motion.button
+                onClick={toggleDarkMode}
+                className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
+                  darkMode 
+                    ? 'bg-gradient-to-r from-indigo-700 to-violet-700 text-white hover:from-indigo-600 hover:to-violet-600'
+                    : scrolled 
+                      ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700' 
+                      : 'bg-white text-indigo-600 hover:bg-indigo-50'
+                }`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
               >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                {darkMode ? (
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Light
+                  </>
                 ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    Dark
+                  </>
                 )}
-              </svg>
-            </motion.button>
+              </motion.button>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <motion.button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`p-2 rounded-md ${
+                  scrolled ? 'text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800' : 'text-white hover:bg-white/10'
+                }`}
+                whileTap={{ scale: 0.9 }}
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  {isOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </motion.button>
+            </div>
           </div>
         </div>
       </div>
@@ -227,23 +235,31 @@ const Navbar = () => {
                     }, 10);
                   }}
                   className={`block py-3 px-4 rounded-lg transition-colors ${
-                    activeSection === item.to
+                    activeSection === item.to 
                       ? 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:bg-gradient-to-r dark:from-indigo-900/20 dark:to-violet-900/20 text-indigo-600 dark:text-indigo-400 font-medium'
                       : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: index * 0.1 }}
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {item.name}
                 </motion.a>
               ))}
+              
+              {/* Dark mode toggle for mobile */}
               <motion.button
                 onClick={() => {
                   toggleDarkMode();
                   setIsOpen(false);
                 }}
-                className="block w-full py-3 px-4 mt-4 bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-800 dark:bg-gradient-to-r dark:from-indigo-800 dark:to-violet-800 dark:text-white hover:from-indigo-100 hover:to-violet-100 dark:hover:from-indigo-700 dark:hover:to-violet-700 rounded-lg transition-colors text-center font-medium flex items-center justify-center"
+                className={`block w-full py-3 px-4 mt-4 ${
+                  darkMode 
+                    ? 'bg-gradient-to-r from-indigo-700 to-violet-700 text-white hover:from-indigo-600 hover:to-violet-600'
+                    : 'bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-800 hover:from-indigo-100 hover:to-violet-100'
+                } rounded-lg transition-colors text-center font-medium flex items-center justify-center`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.2, delay: (navItems.length + 1) * 0.1 }}
