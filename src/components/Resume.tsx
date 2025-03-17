@@ -7,73 +7,68 @@ const Resume = () => {
   const experience = [
     {
       id: 1,
-      title: 'Senior Frontend Developer',
-      company: 'Tech Solutions Inc.',
-      period: '2021 - Present',
-      description: 'Led the frontend development team in building responsive web applications using React and TypeScript. Implemented state management with Redux and improved performance by 40%.',
+      title: 'Systems Analyst',
+      company: 'Central Michigan University',
+      period: 'Nov 2022 - Present',
       achievements: [
-        'Architected and implemented a component library used across multiple projects',
-        'Reduced bundle size by 35% through code splitting and lazy loading',
-        'Mentored junior developers and conducted code reviews'
+        'Provided technical support for Microsoft 365, Blackboard, DUO MFA, and SAP for students and faculty',
+        'Resolved authentication, database access, and system configuration issues via phone, chat, and email',
+        'Developed strong problem-solving skills, handling over 4000 tickets with a roughly 83% closed-on-first-contact rate',
+        'Gained experience troubleshooting software and writing technical documentation for internal use'
       ],
       color: 'from-indigo-500 to-violet-500'
     },
     {
       id: 2,
-      title: 'Frontend Developer',
-      company: 'Digital Innovations',
-      period: '2018 - 2021',
-      description: 'Developed and maintained multiple client-facing web applications. Collaborated with designers and backend developers to implement new features and improve user experience.',
+      title: 'Data Analyst',
+      company: 'Towbook',
+      period: 'May 2021 - July 2022',
       achievements: [
-        'Built responsive interfaces using React and modern CSS techniques',
-        'Integrated RESTful APIs and implemented authentication flows',
-        'Participated in agile development processes'
+        'Automated the process to create impound PDF letters resulting in a 3x increase in claims processed',
+        'Utilized Asana to track, assign, and manage tickets within the system',
+        'Worked in customer support and data entry, creating accounts for customers, and importing info'
       ],
       color: 'from-blue-500 to-indigo-500'
-    },
-    {
-      id: 3,
-      title: 'Web Developer Intern',
-      company: 'StartUp Labs',
-      period: '2017 - 2018',
-      description: 'Assisted in the development of web applications and gained hands-on experience with modern web technologies.',
-      achievements: [
-        'Developed and maintained company website using HTML, CSS, and JavaScript',
-        'Created interactive UI components for client projects',
-        'Learned version control with Git and collaborative development'
-      ],
-      color: 'from-purple-500 to-pink-500'
     }
   ];
 
   const education = [
     {
       id: 1,
-      degree: 'Master of Science in Computer Science',
-      institution: 'University of Technology',
-      period: '2016 - 2018',
-      description: 'Specialized in Web Technologies and Software Engineering. Graduated with honors.',
+      degree: 'Bachelors of Science in Computer Science',
+      institution: 'Central Michigan University',
+      period: '2022 - 2025',
+      description: 'Completed my Bachelors of Computer Science and a minor in Information Technology',
       courses: ['Advanced Web Development', 'Software Architecture', 'Database Systems', 'UI/UX Design'],
-      color: 'from-indigo-500 to-blue-500'
+      color: 'from-cyan-500 to-blue-500'
     },
     {
       id: 2,
       degree: 'Bachelor of Science in Computer Science',
-      institution: 'State University',
-      period: '2012 - 2016',
-      description: 'Focused on programming fundamentals and software development. Participated in coding competitions.',
+      institution: 'St. Clair County Community College',
+      period: '2018 - 2022',
+      description: 'Completed 54 credits accumulating a GPA of 3.08',
       courses: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'Web Development Basics', 'Computer Networks'],
-      color: 'from-violet-500 to-purple-500'
+      color: 'from-blue-500 to-violet-500'
+    },
+    {
+      id: 3,
+      degree: 'High School Diploma',
+      institution: 'St. Clair High School',
+      period: '2017 - 2021',
+      description: 'Graduated Summa Cum Laude with a GPA of 3.78',
+      courses: ['Placeholder', 'Placeholder', 'Placeholder'],
+      color: 'from-violet-500 to-purple-500'      
     }
   ];
 
   const certifications = [
     {
       id: 1,
-      name: 'AWS Certified Developer - Associate',
-      issuer: 'Amazon Web Services',
+      name: 'AZ-900: Azure Fundamentals',
+      issuer: 'Microsoft Learn',
       date: '2022',
-      credentialId: 'AWS-DEV-12345',
+      credentialId: '',
       color: 'from-amber-500 to-orange-500'
     },
     {
@@ -186,7 +181,6 @@ const Resume = () => {
                     </span>
                   </div>
                   <h4 className="text-lg font-medium text-indigo-600 mb-4">{job.company}</h4>
-                  <p className="text-gray-700 mb-4">{job.description}</p>
                   <h5 className="text-sm font-semibold text-gray-800 mb-2">Key Achievements:</h5>
                   <ul className="list-disc pl-5 space-y-1">
                     {job.achievements.map((achievement, i) => (
