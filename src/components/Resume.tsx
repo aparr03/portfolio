@@ -263,7 +263,7 @@ const Resume = () => {
           </motion.div>
         )}
 
-        {/* Download Resume Button */}
+        {/* Replace Download Resume Button with message */}
         <motion.div
           className="text-center mt-16 relative"
           initial={{ opacity: 0 }}
@@ -271,22 +271,19 @@ const Resume = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <motion.a
-            href="/documents/Parr_Resume_Portfolio.pdf"
-            download
-            className="relative inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-lg text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 z-10"
+          <motion.p
+            className="text-lg font-medium text-gray-700 dark:text-gray-300 p-4 border border-indigo-100 dark:border-gray-700 rounded-lg inline-block bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm"
             whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 0 15px rgba(99, 102, 241, 0.5)",
+              scale: 1.02,
+              boxShadow: "0 0 15px rgba(99, 102, 241, 0.2)",
               transition: { duration: 0.1 }
             }}
-            whileTap={{ scale: 0.95 }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block mr-2 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Download Resume
-          </motion.a>
+            Resume available upon request
+          </motion.p>
         </motion.div>
       </div>
     </section>
