@@ -275,7 +275,7 @@ const Resume = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <a
-            href="/alex-parr-resume.pdf"
+            href="/documents/Parr_Resume_Portfolio.pdf"
             download
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
           >
