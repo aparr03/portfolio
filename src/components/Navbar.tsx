@@ -41,6 +41,17 @@ const Navbar = () => {
 
       // Determine active section based on scroll position
       const sections = navItems.map(item => item.to);
+      
+      // Check if we're at the bottom of the page (for Contact section)
+      const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      
+      if (isAtBottom) {
+        // If we're at the bottom, automatically set Contact as active
+        setActiveSection('contact');
+        return;
+      }
+      
+      // Otherwise continue with normal detection
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -112,12 +123,20 @@ const Navbar = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 {item.name}
-                {activeSection === item.to && (
-                  <motion.div 
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-violet-600"
-                    layoutId="activeSection"
-                  />
-                )}
+                <motion.div 
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-600 dark:bg-indigo-500"
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ 
+                    scaleX: activeSection === item.to ? 1 : 0,
+                    opacity: activeSection === item.to ? 1 : 0 
+                  }}
+                  transition={{ 
+                    duration: 0.3, 
+                    ease: "easeInOut", 
+                    bounce: 0
+                  }}
+                  style={{ transformOrigin: "center" }}
+                />
               </motion.a>
             ))}
           </div>
@@ -144,9 +163,9 @@ const Navbar = () => {
                 onClick={toggleDarkMode}
                 className={`px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center ${
                   darkMode 
-                    ? 'bg-gradient-to-r from-indigo-700 to-violet-700 text-white hover:from-indigo-600 hover:to-violet-600'
+                    ? 'bg-indigo-700 text-white hover:bg-indigo-600'
                     : scrolled 
-                      ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700' 
+                      ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
                       : 'bg-white text-indigo-600 hover:bg-indigo-50'
                 }`}
                 initial={{ opacity: 0, y: -10 }}
@@ -257,8 +276,8 @@ const Navbar = () => {
                 }}
                 className={`block w-full py-3 px-4 mt-4 ${
                   darkMode 
-                    ? 'bg-gradient-to-r from-indigo-700 to-violet-700 text-white hover:from-indigo-600 hover:to-violet-600'
-                    : 'bg-gradient-to-r from-indigo-50 to-violet-50 text-indigo-800 hover:from-indigo-100 hover:to-violet-100'
+                    ? 'bg-indigo-700 text-white hover:bg-indigo-600'
+                    : 'bg-indigo-50 text-indigo-800 hover:bg-indigo-100'
                 } rounded-lg transition-colors text-center font-medium flex items-center justify-center`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
