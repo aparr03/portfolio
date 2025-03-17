@@ -35,7 +35,7 @@ const Projects = () => {
       tags: ['React', 'Node.js', 'Vercel', 'Supabase'],
       category: 'fullstack',
       demoLink: 'https://tymelyne.vercel.app/',
-      codeLink: '#',
+      codeLink: 'https://github.com/marcdejesus/tymelyneweb',
       color: 'from-indigo-500 to-blue-500'
     },
     {

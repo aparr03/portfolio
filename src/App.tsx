@@ -39,7 +39,20 @@ function App() {
             </a>
           </div>
           <div className="mt-6">
-            <a href="#home" className="text-indigo-300 hover:text-white transition-colors">
+            <a 
+              href="#home" 
+              className="inline-flex items-center px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-md bg-indigo-700 text-white hover:bg-indigo-600 transform hover:-translate-y-1"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
               Back to Top
             </a>
           </div>
