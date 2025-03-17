@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { supabase } from '../lib/supabase';
+import emailjs from '@emailjs/browser';
 
 // No Supabase import needed - using Formspree instead
 
@@ -10,6 +11,19 @@ const Contact = () => {
   const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
   const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+  // Initialize EmailJS with your public key
+  useEffect(() => {
+    if (emailjsPublicKey) {
+      emailjs.init(emailjsPublicKey);
+    }
+    
+    // For debugging - log environment variables
+    console.log('Environment variables:');
+    console.log('Public Key:', emailjsPublicKey ? 'Found' : 'Not found');
+    console.log('Service ID:', emailjsServiceId ? 'Found' : 'Not found');
+    console.log('Template ID:', emailjsTemplateId ? 'Found' : 'Not found');
+  }, [emailjsPublicKey, emailjsServiceId, emailjsTemplateId]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -52,32 +66,23 @@ const Contact = () => {
         throw new Error(`Database error: ${dbError.message}`);
       }
       
-      // Then, send email directly using EmailJS with environment variables
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: emailjsServiceId,
-          template_id: emailjsTemplateId,
-          public_key: emailjsPublicKey,
-          template_params: {
-            to_email: 'aparr3@hotmail.com',
-            from_name: formData.name,
-            from_email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-            reply_to: formData.email,
-          }
-        }),
-      });
+      // Then, send email using EmailJS SDK
+      const templateParams = {
+        to_email: 'aparr3@hotmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        reply_to: formData.email,
+      };
       
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('EmailJS error:', errorText);
-        throw new Error(`Failed to send email: ${errorText}`);
-      }
+      // Hardcoded fallbacks if environment variables are not available
+      const serviceId = emailjsServiceId || 'service_tgk2v0u';
+      const templateId = emailjsTemplateId || 'template_y1zl4lg';
+      
+      const response = await emailjs.send(serviceId, templateId, templateParams);
+      
+      console.log('EmailJS response:', response);
 
       // Success
       setFormStatus({
