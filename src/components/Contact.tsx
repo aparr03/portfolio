@@ -8,8 +8,10 @@ import emailjs from '@emailjs/browser';
 emailjs.init("UhgvWScf2NpFX_afI");
 
 const Contact = () => {
+  // EmailJS configuration
   const emailjsServiceId = 'service_tgk2v0u';
-  const emailjsTemplateId = 'template_y1zl4lg';
+  const emailjsTemplateId = 'template_y1zl4lg'; // Notification email to you
+  const emailjsConfirmationTemplateId = 'template_nhi9tnx'; // Automated Confirmation email to user
 
   const [formData, setFormData] = useState({
     name: '',
@@ -49,8 +51,8 @@ const Contact = () => {
         throw new Error(`Database error: ${dbError.message}`);
       }
       
-      // Send email using EmailJS
-      const templateParams = {
+      // Send notification email to site owner
+      const notificationParams = {
         to_email: 'aparr3@hotmail.com',
         from_name: formData.name,
         from_email: formData.email,
@@ -59,14 +61,27 @@ const Contact = () => {
         reply_to: formData.email,
       };
       
-      await emailjs.send(emailjsServiceId, emailjsTemplateId, templateParams);
+      // Send confirmation email to the user
+      const confirmationParams = {
+        user_name: formData.name,
+        user_email: formData.email,
+        subject: formData.subject,
+        to_email: formData.email,
+        reply_to: 'aparr3@hotmail.com',
+      };
+      
+      // Send both emails in parallel
+      await Promise.all([
+        emailjs.send(emailjsServiceId, emailjsTemplateId, notificationParams),
+        emailjs.send(emailjsServiceId, emailjsConfirmationTemplateId, confirmationParams)
+      ]);
 
       // Success
       setFormStatus({
         submitting: false,
         success: true,
         error: false,
-        message: 'Message sent successfully! I\'ll get back to you soon.'
+        message: 'Message sent successfully! A confirmation email has been sent to your inbox.'
       });
       
       // Reset form
