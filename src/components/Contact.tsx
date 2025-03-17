@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { supabase } from '../lib/supabase';
 import React from 'react';
+import { supabase } from '../lib/supabase';
+
+// No Supabase import needed - using Formspree instead
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,19 +30,21 @@ const Contact = () => {
     setFormStatus({ submitting: true, success: false, error: false, message: 'Sending...' });
 
     try {
-      // Insert the message into your Supabase table
-      const { error } = await supabase
-        .from('messages')
-        .insert([
-          { 
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject,
-            message: formData.message
-          }
-        ]);
+      console.log('Submitting form to Supabase with data:', formData);
+      
+      // Insert directly into Supabase
+      const { error } = await supabase.from('messages').insert([
+        { 
+          name: formData.name, 
+          email: formData.email, 
+          subject: formData.subject, 
+          message: formData.message 
+        }
+      ]);
 
-      if (error) throw error;
+      if (error) {
+        throw new Error(`Database error: ${error.message}`);
+      }
 
       // Success
       setFormStatus({
@@ -59,7 +63,7 @@ const Contact = () => {
         submitting: false,
         success: false,
         error: true,
-        message: 'Failed to send message. Please try again.'
+        message: 'Failed to send message. Please try again or contact me directly at aparr3@hotmail.com'
       });
     }
   };
