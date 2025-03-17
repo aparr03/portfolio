@@ -64,17 +64,40 @@ const Contact = () => {
       // Send confirmation email to the user
       const confirmationParams = {
         user_name: formData.name,
+        from_name: "Andrew Parr", // Make sure this matches the expected template variable
+        to_name: formData.name,
         user_email: formData.email,
         subject: formData.subject,
+        message: formData.message, // Include the message in case it's needed
         to_email: formData.email,
         reply_to: 'aparr3@hotmail.com',
+        from_email: 'aparr3@hotmail.com',
+        email: formData.email // Some templates might use email instead of user_email
       };
       
-      // Send both emails in parallel
-      await Promise.all([
-        emailjs.send(emailjsServiceId, emailjsTemplateId, notificationParams),
-        emailjs.send(emailjsServiceId, emailjsConfirmationTemplateId, confirmationParams)
-      ]);
+      // Try sending emails one at a time to better identify errors
+      try {
+        // First send notification to site owner
+        console.log('Sending notification email to site owner...');
+        const notificationResult = await emailjs.send(
+          emailjsServiceId, 
+          emailjsTemplateId, 
+          notificationParams
+        );
+        console.log('Notification email sent successfully:', notificationResult);
+        
+        // Then send confirmation to user
+        console.log('Sending confirmation email to user:', formData.email);
+        const confirmationResult = await emailjs.send(
+          emailjsServiceId, 
+          emailjsConfirmationTemplateId, 
+          confirmationParams
+        );
+        console.log('Confirmation email sent successfully:', confirmationResult);
+      } catch (emailError) {
+        console.error('Error sending emails:', emailError);
+        throw new Error(`Email sending failed: ${emailError instanceof Error ? emailError.message : String(emailError)}`);
+      }
 
       // Success
       setFormStatus({
