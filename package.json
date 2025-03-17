@@ -13,6 +13,7 @@
     "supabase:link": "npx supabase link --project-ref ikkpkkfzjvmshbaleazq"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.2.0",
     "@supabase/supabase-js": "^2.49.1",
     "framer-motion": "^12.5.0",
