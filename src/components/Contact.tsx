@@ -6,6 +6,11 @@ import { supabase } from '../lib/supabase';
 // No Supabase import needed - using Formspree instead
 
 const Contact = () => {
+  // Get environment variables
+  const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,10 +35,10 @@ const Contact = () => {
     setFormStatus({ submitting: true, success: false, error: false, message: 'Sending...' });
 
     try {
-      console.log('Submitting form to Supabase with data:', formData);
+      console.log('Submitting form with data:', formData);
       
-      // Insert directly into Supabase
-      const { error } = await supabase.from('messages').insert([
+      // First, save to Supabase
+      const { error: dbError } = await supabase.from('messages').insert([
         { 
           name: formData.name, 
           email: formData.email, 
@@ -42,8 +47,36 @@ const Contact = () => {
         }
       ]);
 
-      if (error) {
-        throw new Error(`Database error: ${error.message}`);
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw new Error(`Database error: ${dbError.message}`);
+      }
+      
+      // Then, send email directly using EmailJS with environment variables
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: emailjsServiceId,
+          template_id: emailjsTemplateId,
+          public_key: emailjsPublicKey,
+          template_params: {
+            to_email: 'aparr3@hotmail.com',
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            reply_to: formData.email,
+          }
+        }),
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('EmailJS error:', errorText);
+        throw new Error(`Failed to send email: ${errorText}`);
       }
 
       // Success
