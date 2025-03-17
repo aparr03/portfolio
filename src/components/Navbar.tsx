@@ -16,14 +16,7 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    // Check for user's preference
-    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (isDarkMode) {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
-    
-    // Check if there's a saved preference
+    // Check if there's a saved preference in localStorage first
     const savedMode = localStorage.getItem('darkMode');
     if (savedMode) {
       const isDark = savedMode === 'dark';
@@ -33,6 +26,14 @@ const Navbar = () => {
       } else {
         document.documentElement.classList.remove('dark');
       }
+    } else {
+      // If no saved preference, check system preference
+      const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      // If system prefers dark mode or no preference, use dark mode (default to dark)
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'dark');
     }
     
     const handleScroll = () => {

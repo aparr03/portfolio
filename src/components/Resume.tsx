@@ -85,11 +85,8 @@ const Resume = () => {
 
   return (
     <section id="resume" className="resume-bg section-padding relative overflow-hidden dark:bg-gray-900">
-      {/* Enhanced background styling */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/70 to-indigo-50/50 dark:from-gray-900/90 dark:to-indigo-950/20 z-0 bg-animate-slow"></div>
-      <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3 z-0"></div>
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-indigo-100/20 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-violet-100/20 to-transparent dark:from-violet-900/10 dark:to-transparent z-0"></div>
+      {/* Simple plain background */}
+      <div className="absolute inset-0 bg-white dark:bg-gray-900 z-0"></div>
 
       <div className="content-container relative z-10">
         <motion.div
@@ -268,22 +265,28 @@ const Resume = () => {
 
         {/* Download Resume Button */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-16 relative"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <a
+          <motion.a
             href="/documents/Parr_Resume_Portfolio.pdf"
             download
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+            className="relative inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-lg text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 z-10"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 0 15px rgba(99, 102, 241, 0.5)",
+              transition: { duration: 0.1 }
+            }}
+            whileTap={{ scale: 0.95 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
             Download Resume
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

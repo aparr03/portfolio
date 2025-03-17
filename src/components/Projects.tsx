@@ -7,24 +7,24 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with product management, cart functionality, and payment processing.',
-      image: '/project1.jpg',
+      title: 'Tymelyne',
+      description: 'A website with full server-side integration to save goals and track progress using user-data.',
+      image: '/images/tymelyne_demo.png',
       tags: ['React', 'Node.js', 'MongoDB', 'Express'],
       category: 'fullstack',
-      demoLink: '#',
+      demoLink: 'https://tymelyne.vercel.app/',
       codeLink: '#',
       color: 'from-indigo-500 to-blue-500'
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A productivity app for managing tasks, projects, and deadlines with team collaboration features.',
+      title: 'Parr-4-The-Course',
+      description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile.',
       image: '/project2.jpg',
       tags: ['React', 'Redux', 'Firebase'],
       category: 'frontend',
-      demoLink: '#',
-      codeLink: '#',
+      demoLink: 'https://p4tc.vercel.app/',
+      codeLink: 'https://github.com/aparr03/parr-4-the-course',
       color: 'from-violet-500 to-purple-500'
     },
     {
