@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -7,13 +7,13 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [darkMode, setDarkMode] = useState(false);
 
-  const navItems = useMemo(() => [
+  const navItems = [
     { name: 'Home', to: 'home' },
     { name: 'About', to: 'about' },
     { name: 'Resume', to: 'resume' },
     { name: 'Projects', to: 'projects' },
     { name: 'Contact', to: 'contact' },
-  ], []);
+  ];
 
   useEffect(() => {
     // Check if there's a saved preference in localStorage first
