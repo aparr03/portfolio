@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import React from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../supabase';
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with public key from environment variables
