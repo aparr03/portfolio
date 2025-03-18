@@ -42,9 +42,9 @@ const Projects = () => {
       id: 2,
       title: 'Parr-4-The-Course',
       description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile.',
-      image: '/project2.jpg',
-      tags: ['React', 'Vite', 'Firebase'],
-      category: 'frontend',
+      image: '/images/p4tc_demo.png',
+      tags: ['React', 'Vite', 'Supabase', 'Node.js', 'Vercel'],
+      category: 'fullstack',
       demoLink: 'https://p4tc.vercel.app/',
       codeLink: 'https://github.com/aparr03/parr-4-the-course',
       color: 'from-violet-500 to-purple-500'
