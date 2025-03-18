@@ -162,26 +162,6 @@ section {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Pulse animations */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse {
-  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.animate-pulse-slow {
-  animation: pulse 7s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
 /* Custom section backgrounds */
 .about-bg {
   @apply bg-gradient-to-br from-indigo-50 to-violet-50 dark:from-gray-900 dark:to-gray-800;
@@ -197,43 +177,6 @@ section {
 
 .contact-bg {
   @apply bg-gradient-to-br from-violet-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800;
-}
-
-/* Grid pattern background */
-.bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.dark .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-}
-
-/* Animated background effect */
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.bg-animate {
-  background-size: 400% 400%;
-  animation: gradientMove 15s ease infinite;
-}
-
-.bg-animate-slow {
-  background-size: 200% 200%;
-  animation: gradientMove 25s ease infinite;
 }
 
 /* Responsive container for all sections */
@@ -272,7 +215,7 @@ section {
 
 .glow::after {
   content: '';
-  @apply absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity duration-100 -z-10 blur-xl;
+  @apply absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity duration-300 -z-10 blur-xl;
 }
 
 .glow:hover::after {

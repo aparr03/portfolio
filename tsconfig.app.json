@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "supabase/index.ts", "supabase/deno.d.ts"]
+  "include": ["src", "supabase/index.ts", "supabase/deno.d.ts", "supabase/supabase.ts"]
 }
