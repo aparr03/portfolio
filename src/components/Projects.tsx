@@ -36,7 +36,8 @@ const Projects = () => {
       category: 'fullstack',
       demoLink: 'https://tymelyne.vercel.app/',
       codeLink: 'https://github.com/marcdejesus/tymelyneweb',
-      color: 'from-indigo-500 to-blue-500'
+      color: 'from-indigo-500 to-blue-500',
+      noTint: true
     },
     {
       id: 2,
@@ -47,7 +48,8 @@ const Projects = () => {
       category: 'fullstack',
       demoLink: 'https://p4tc.vercel.app/',
       codeLink: 'https://github.com/aparr03/parr-4-the-course',
-      color: 'from-violet-500 to-purple-500'
+      color: 'from-violet-500 to-purple-500',
+      noTint: true
     },
     {
       id: 3,
