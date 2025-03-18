@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import React from 'react';
-import { supabase } from '../../supabase/supabase';
+import { supabase } from '../../supabase';
 import emailjs from '@emailjs/browser';
 
 // Initialize EmailJS with public key from environment variables
@@ -136,23 +136,11 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-bg section-padding relative overflow-hidden dark:bg-gray-900">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-indigo-400/20 dark:bg-indigo-500/30 rounded-full"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 8 + 4}px`,
-              height: `${Math.random() * 8 + 4}px`,
-              animation: `float ${Math.random() * 10 + 10}s linear infinite`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          />
-        ))}
-      </div>
+      {/* Enhanced background styling */}
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-50/70 to-indigo-100/70 dark:from-violet-950/20 dark:to-indigo-950/20 z-0 bg-animate-slow"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-5 z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-violet-100/30 to-transparent dark:from-violet-900/10 dark:to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-indigo-100/30 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
 
       <div className="content-container relative z-10">
         <motion.div

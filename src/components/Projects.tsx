@@ -1,53 +1,68 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [showTools, setShowTools] = useState(false);
+  
+  // Add CSS for enhanced images 
+  // This would normally go in a CSS file, but we'll add it inline for simplicity
+  const imageEnhancedStyle = `
+    .image-enhanced {
+      image-rendering: -webkit-optimize-contrast;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      perspective: 1000px;
+    }
+  `;
+  
+  const portfolioTools = [
+    { name: 'React', icon: '/images/react_logo.svg', color: '#61DAFB', description: 'Frontend library' },
+    { name: 'Vite', icon: '/images/vite_logo.svg', color: '#646CFF', description: 'Build tool' },
+    { name: 'Tailwind CSS', icon: '/images/tailwind_logo.svg', color: '#38B2AC', description: 'Styling framework' },
+    { name: 'Framer Motion', icon: '/images/framer-motion_logo.svg', color: '#0055FF', description: 'Animation library' },
+    { name: 'Vercel', icon: '/images/vercel_logo.svg', color: '#000000', description: 'Deployment platform' },
+    { name: 'Supabase', icon: '/images/supabase_logo.svg', color: '#3ECF8E', description: 'Backend service' },
+    { name: 'EmailJS', icon: '/images/emailjs_logo.svg', color: '#FF6B6B', description: 'Email service' }
+  ];
   
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce platform with product management, cart functionality, and payment processing.',
-      image: '/project1.jpg',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+      title: 'Tymelyne',
+      description: 'A website with full server-side integration to save goals and track progress using user-data.',
+      image: '/images/tymelyne_demo.png',
+      tags: ['React', 'Node.js', 'Vercel', 'Supabase'],
       category: 'fullstack',
-      demoLink: '#',
-      codeLink: '#',
-      color: 'from-indigo-500 to-blue-500'
+      demoLink: 'https://tymelyne.vercel.app/',
+      codeLink: 'https://github.com/marcdejesus/tymelyneweb',
+      color: 'from-indigo-500 to-blue-500',
+      noTint: true
     },
     {
       id: 2,
-      title: 'Task Management App',
-      description: 'A productivity app for managing tasks, projects, and deadlines with team collaboration features.',
-      image: '/project2.jpg',
-      tags: ['React', 'Redux', 'Firebase'],
-      category: 'frontend',
-      demoLink: '#',
-      codeLink: '#',
-      color: 'from-violet-500 to-purple-500'
+      title: 'Parr-4-The-Course',
+      description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile.',
+      image: '/images/p4tc_demo.png',
+      tags: ['React', 'Vite', 'Supabase', 'Node.js', 'Vercel'],
+      category: 'fullstack',
+      demoLink: 'https://p4tc.vercel.app/',
+      codeLink: 'https://github.com/aparr03/parr-4-the-course',
+      color: 'from-violet-500 to-purple-500',
+      noTint: true
     },
     {
       id: 3,
-      title: 'Weather Dashboard',
-      description: 'A weather application that provides real-time forecasts and historical weather data visualization.',
-      image: '/project3.jpg',
-      tags: ['JavaScript', 'API', 'Chart.js'],
+      title: 'Well-Tasked',
+      description: 'My first take at a task management app. This app allows for users to create an account and upload a bio with a profile picture.',
+      image: '/images/welltasked_demo.png',
+      tags: ['React', 'API', 'Chart.js'],
       category: 'frontend',
-      demoLink: '#',
-      codeLink: '#',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 4,
-      title: 'RESTful API Service',
-      description: 'A robust API service for data management with authentication, rate limiting, and comprehensive documentation.',
-      image: '/project4.jpg',
-      tags: ['Node.js', 'Express', 'MongoDB'],
-      category: 'backend',
-      demoLink: '#',
-      codeLink: '#',
-      color: 'from-emerald-500 to-green-500'
+      demoLink: 'https://welltasked.vercel.app/',
+      codeLink: 'https://github.com/aparr03/WellTasked',
+      color: 'from-transparent to-transparent',
+      noTint: true,
+      imageEnhanced: true
     },
   ];
 
@@ -64,11 +79,14 @@ const Projects = () => {
 
   return (
     <section id="projects" className="projects-bg section-padding relative overflow-hidden dark:bg-gray-900">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-indigo-100/50 to-transparent dark:from-indigo-900/30"></div>
-      <div className="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-purple-100/50 to-transparent dark:from-purple-900/30"></div>
-      <div className="absolute top-1/4 right-10 w-64 h-64 bg-indigo-300/10 dark:bg-indigo-500/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-10 w-80 h-80 bg-purple-300/10 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
+      {/* Add style tag for enhanced images */}
+      <style dangerouslySetInnerHTML={{ __html: imageEnhancedStyle }} />
+      
+      {/* Enhanced background styling */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/70 to-purple-50/70 dark:from-indigo-950/20 dark:to-purple-950/20 z-0 bg-animate-slow"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-5 z-0"></div>
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-indigo-100/30 to-transparent dark:from-indigo-900/10 dark:to-transparent z-0"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-purple-100/30 to-transparent dark:from-purple-900/10 dark:to-transparent z-0"></div>
 
       <div className="content-container relative z-10">
         <motion.div
@@ -111,28 +129,40 @@ const Projects = () => {
 
         {/* Projects grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
               className="project-card h-full flex flex-col glow"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
+              transition={{ duration: 0.1 }}
+              whileHover={{ 
+                y: -10,
+                transition: { duration: 0.1 }
+              }}
             >
               <div className="relative overflow-hidden h-60">
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-80`}></div>
+                {!project.noTint && (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-80`}></div>
+                )}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110 mix-blend-overlay"
+                  className={`w-full h-full object-cover transition-transform duration-500 hover:scale-110 
+                    ${!project.noTint ? 'mix-blend-overlay' : ''} 
+                    ${project.imageEnhanced ? 'image-enhanced' : ''}`}
+                  style={project.imageEnhanced ? {
+                    imageRendering: 'auto',
+                    filter: 'contrast(1.05) brightness(1.05)',
+                    boxShadow: 'inset 0 0 20px rgba(0,0,0,0.1)'
+                  } : {}}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-xl font-bold text-white mb-1">{project.title}</h3>
                   <div className="flex flex-wrap gap-1">
-                    {project.tags.slice(0, 2).map((tag, tagIndex) => (
+                    {project.tags.slice(0, 5).map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
                         className="px-2 py-1 bg-white/20 text-white text-xs font-medium rounded-full backdrop-blur-sm"
@@ -140,9 +170,9 @@ const Projects = () => {
                         {tag}
                       </span>
                     ))}
-                    {project.tags.length > 2 && (
+                    {project.tags.length > 5 && (
                       <span className="px-2 py-1 bg-white/20 text-white text-xs font-medium rounded-full backdrop-blur-sm">
-                        +{project.tags.length - 2}
+                        +{project.tags.length - 5}
                       </span>
                     )}
                   </div>
@@ -187,19 +217,86 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <motion.a
-            href="https://github.com/aparr03"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline inline-flex items-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-            </svg>
-            View More on GitHub
-          </motion.a>
+          <div className="flex flex-col items-center space-y-4">
+            <motion.button
+              onClick={() => setShowTools(!showTools)}
+              className="px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-md bg-gradient-to-r from-indigo-600 to-violet-600 text-white hover:from-indigo-700 hover:to-violet-700 inline-flex items-center mb-4"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {showTools ? 'Hide Tools Used' : 'Tools For This Portfolio'}
+            </motion.button>
+            
+            <AnimatePresence>
+              {showTools && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full max-w-4xl mx-auto mb-8"
+                >
+                  <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-indigo-100 dark:border-gray-700">
+                    <h3 className="text-2xl font-bold text-center mb-6 gradient-text">Tools Used For This Portfolio</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {portfolioTools.map((tool, index) => (
+                        <motion.div
+                          key={tool.name}
+                          className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:shadow-md transition-all"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                        >
+                          <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                            <img
+                              src={tool.icon}
+                              alt={`${tool.name} icon`}
+                              className="w-8 h-8 object-contain"
+                              style={{ opacity: 1 }}
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                const letter = tool.name.charAt(0);
+                                const parent = target.parentNode;
+                                if (parent) {
+                                  const div = document.createElement('div');
+                                  div.className = 'w-10 h-10 flex items-center justify-center text-xl font-bold rounded-md';
+                                  div.style.backgroundColor = `${tool.color}15`;
+                                  div.style.color = tool.color;
+                                  div.textContent = letter;
+                                  parent.replaceChild(div, target);
+                                }
+                              }}
+                            />
+                          </div>
+                          <h4 className="font-medium text-gray-900 dark:text-white">{tool.name}</h4>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 text-center">{tool.description}</p>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            <motion.a
+              href="https://github.com/aparr03"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline inline-flex items-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.032 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+              </svg>
+              View More on GitHub
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>
