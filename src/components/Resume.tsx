@@ -69,7 +69,7 @@ const Resume = () => {
       issuer: 'Microsoft',
       date: '2022',
       credentialId: 'DE7FC6480533A3F9',
-      color: 'from-amber-500 to-orange-500',
+      color: 'from-cyan-500 to-blue-500',
       credlyUrl: 'https://www.credly.com/badges/e6f0302f-4a6d-41cf-98fe-870ec9416843/public_url'
     },
     {
@@ -78,7 +78,7 @@ const Resume = () => {
       issuer: 'Microsoft',
       date: '2023',
       credentialId: '801EC8FD78D3937B',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-500 to-violet-500',
       credlyUrl: 'https://www.credly.com/badges/158b07be-9ae5-4736-851b-82b65fe32dcf/public_url'
     },
     {id: 3,
@@ -86,7 +86,7 @@ const Resume = () => {
       issuer: 'CodeAcademy',
       date: '2025',
       credentialId: 'N/A',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-violet-500 to-purple-500',
       credlyUrl: 'https://www.codecademy.com/profiles/aparr03/certificates/154a14d92f104c7bad51a5c6441d0056'
     },
     {id: 4,
@@ -94,7 +94,7 @@ const Resume = () => {
       issuer: 'CodeAcademy',
       date: '2025',
       credentialId: 'N/A',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-purple-500 to-indigo-500',
       credlyUrl: 'https://www.codecademy.com/profiles/aparr03/certificates/3b2c5de258e6407cae576d66bfef9e91'
     },
     {id: 5,
@@ -102,7 +102,7 @@ const Resume = () => {
       issuer: 'CodeAcademy',
       date: '2024',
       credentialId: 'N/A',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-indigo-500 to-blue-500',
       credlyUrl: 'https://www.codecademy.com/profiles/aparr03/certificates/9eb0741e5ebef1f9f58a53bfac67d3a7'
     }
   ];
