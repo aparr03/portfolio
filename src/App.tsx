@@ -7,27 +7,7 @@ import Contact from './components/Contact';
 import LogoMarquee from './components/LogoMarquee';
 import './App.css';
 import './index.css';
-import { useEffect } from 'react';
 
-function ScrollToHashElement() {
-  useEffect(() => {
-    // If there's a hash in the URL
-    if (window.location.hash) {
-      // Get the element with the ID matching the hash
-      const id = window.location.hash.substring(1); // Remove the '#'
-      const element = document.getElementById(id);
-      
-      // If element exists, scroll to it
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 300); // Small delay to ensure page is fully loaded
-      }
-    }
-  }, []); // Run once on component mount
-
-  return null; // This is just a utility component with no UI
-}
 
 function App() {
   return (
