@@ -69,7 +69,7 @@ const Resume = () => {
       issuer: 'Microsoft',
       date: '2022',
       credentialId: 'DE7FC6480533A3F9',
-      color: 'from-amber-500 to-orange-500',
+      color: 'from-cyan-500 to-blue-500',
       credlyUrl: 'https://www.credly.com/badges/e6f0302f-4a6d-41cf-98fe-870ec9416843/public_url'
     },
     {
@@ -78,8 +78,32 @@ const Resume = () => {
       issuer: 'Microsoft',
       date: '2023',
       credentialId: '801EC8FD78D3937B',
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-blue-500 to-violet-500',
       credlyUrl: 'https://www.credly.com/badges/158b07be-9ae5-4736-851b-82b65fe32dcf/public_url'
+    },
+    {id: 3,
+      name: 'Learn Prompt Engineering',
+      issuer: 'CodeAcademy',
+      date: '2025',
+      credentialId: 'N/A',
+      color: 'from-violet-500 to-purple-500',
+      credlyUrl: 'https://www.codecademy.com/profiles/aparr03/certificates/154a14d92f104c7bad51a5c6441d0056'
+    },
+    {id: 4,
+      name: 'Intro to OpenAI API',
+      issuer: 'CodeAcademy',
+      date: '2025',
+      credentialId: 'N/A',
+      color: 'from-purple-500 to-indigo-500',
+      credlyUrl: 'https://www.codecademy.com/profiles/aparr03/certificates/3b2c5de258e6407cae576d66bfef9e91'
+    },
+    {id: 5,
+      name: 'Learn HTML',
+      issuer: 'CodeAcademy',
+      date: '2024',
+      credentialId: 'N/A',
+      color: 'from-indigo-500 to-blue-500',
+      credlyUrl: 'https://www.codecademy.com/profiles/aparr03/certificates/9eb0741e5ebef1f9f58a53bfac67d3a7'
     }
   ];
 
@@ -153,13 +177,13 @@ const Resume = () => {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            {experience.map((job, index) => (
+            {experience.map((job) => (
               <motion.div
                 key={job.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.3}}
                 className="timeline-item"
               >
                 <div className={`timeline-dot bg-gradient-to-br ${job.color}`}></div>
@@ -192,13 +216,13 @@ const Resume = () => {
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            {education.map((edu, index) => (
+            {education.map((edu) => (
               <motion.div
                 key={edu.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.3}}
                 className="timeline-item"
               >
                 <div className={`timeline-dot bg-gradient-to-br ${edu.color}`}></div>
@@ -226,19 +250,19 @@ const Resume = () => {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
           >
-            {certifications.map((cert, index) => (
+            {certifications.map((cert) => (
               <motion.div
                 key={cert.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.3 }}
                 className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-indigo-50 dark:border-gray-700 hover:shadow-lg transition-shadow duration-300 relative overflow-hidden flex flex-col h-full"
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
                 <div className={`absolute top-0 left-0 w-2 h-full bg-gradient-to-b ${cert.color}`}></div>
-                <div className="pl-4 flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">{cert.name}</h3>
+                <div className="pl-4 flex-1 flex flex-col min-h-[100px]">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">{cert.name}</h3>
                   <a 
                     href={cert.credlyUrl} 
                     target="_blank" 
@@ -249,7 +273,7 @@ const Resume = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.102-1.101" />
                     </svg>
-                    Verify on Credly
+                    Verify Here
                   </a>
                 </div>
                 <div className="pl-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-700">

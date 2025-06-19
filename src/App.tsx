@@ -4,6 +4,7 @@ import About from './components/About';
 import Resume from './components/Resume';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import LogoMarquee from './components/LogoMarquee';
 import './App.css';
 import './index.css';
 import { useEffect } from 'react';
@@ -41,8 +42,9 @@ function App() {
           <Contact />
         </div>
       </main>
-      <footer className="bg-gradient-to-r from-indigo-900 to-violet-900 dark:from-indigo-950 dark:to-violet-950 text-white py-12 mt-auto">
-        <div className="section-container text-center">
+      <footer className="bg-gradient-to-r from-indigo-900 to-violet-900 dark:from-indigo-950 dark:to-violet-950 text-white pt-0 pb-12 mt-auto">
+        <LogoMarquee />
+        <div className="section-container text-center pt-12">
           <p className="text-lg mb-4">© {new Date().getFullYear()} Andrew Parr</p>
           <p>All rights reserved</p>
           <div className="flex justify-center space-x-6 mt-6">
