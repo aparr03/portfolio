@@ -29,6 +29,18 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'Tymelyne',
+      description: 'A mobile app using openAI to generate tailored learning paths for users.',
+      image: '/images/tymelyne_demo.png',
+      tags: ['MongoDB', 'OpenAI API', 'Docker', 'ExpoGo'],
+      category: 'fullstack',
+      demoLink: 'https://aparr03.github.io/tymelyne_demo/',
+      codeLink: 'https://github.com/marcdejesus/tymelyne',
+      color: 'from-indigo-500 to-blue-500',
+      noTint: true
+    },
+    {
+      id: 2,
       title: 'Parr-4-The-Course',
       description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile or share them with a community.',
       image: '/images/p4tc_demo.png',
@@ -37,18 +49,6 @@ const Projects = () => {
       demoLink: 'https://p4tc.vercel.app/',
       codeLink: 'https://github.com/aparr03/parr-4-the-course',
       color: 'from-violet-500 to-purple-500',
-      noTint: true
-    },
-    {
-      id: 2,
-      title: 'Tymelyne',
-      description: 'A website with full server-side integration to save goals and track progress using user-data.',
-      image: '/images/tymelyne_demo.png',
-      tags: ['React', 'Node.js', 'Vercel', 'Supabase'],
-      category: 'fullstack',
-      demoLink: 'https://tymelyne.vercel.app/',
-      codeLink: 'https://github.com/marcdejesus/tymelyneweb',
-      color: 'from-indigo-500 to-blue-500',
       noTint: true
     },
     {
