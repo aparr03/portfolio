@@ -41,7 +41,7 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/50 dark:to-violet-900/50 rounded-xl transform rotate-3"></div>
               <div className="absolute -inset-4 bg-white/50 dark:bg-gray-800/50 rounded-xl transform -rotate-2"></div>
               <img 
-                src="/images/headshot.jpg" 
+                src="/images/portraits/andrew_grad.png" 
                 alt="Professional headshot" 
                 className="relative z-10 rounded-lg shadow-xl w-full h-auto border-4 border-white dark:border-gray-700"
               />

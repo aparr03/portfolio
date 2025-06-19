@@ -44,7 +44,7 @@ const Home = () => {
             className="w-32 h-32 rounded-full border-4 border-white/30 mx-auto mb-8 overflow-hidden shadow-xl"
           >
             <img
-              src="/images/headshot.jpg" 
+              src="/images/portraits/headshot.jpg" 
               alt="Profile"
               className="w-full h-full object-cover"
             />
