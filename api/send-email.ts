@@ -9,38 +9,48 @@ const corsHeaders = {
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Set CORS headers first
+  Object.entries(corsHeaders).forEach(([key, value]) => {
+    res.setHeader(key, value);
+  });
+
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return res.status(200).json({ success: true });
   }
 
   if (req.method !== 'POST') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Set CORS headers
-  Object.entries(corsHeaders).forEach(([key, value]) => {
-    res.setHeader(key, value);
-  });
-
   try {
-    const { name, email, subject, message } = req.body;
-
-    // Validate required fields
-    if (!name || !email || !subject || !message) {
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    // Validate environment variables
+    console.log('API called - checking environment variables...');
+    
+    // Validate environment variables first with detailed logging
     const gmailUser = process.env.GMAIL_USER;
     const gmailPass = process.env.GMAIL_PASS;
     const contactEmail = process.env.CONTACT_EMAIL;
+
+    console.log('Environment check:', { 
+      gmailUser: gmailUser ? `${gmailUser.substring(0, 3)}***` : 'MISSING',
+      gmailPass: gmailPass ? `${gmailPass.substring(0, 4)}***` : 'MISSING',
+      contactEmail: contactEmail ? `${contactEmail.substring(0, 3)}***` : 'MISSING'
+    });
 
     if (!gmailUser || !gmailPass || !contactEmail) {
       console.error('Missing environment variables:', { gmailUser: !!gmailUser, gmailPass: !!gmailPass, contactEmail: !!contactEmail });
       return res.status(500).json({ error: 'Server configuration error: Missing email credentials' });
     }
+
+    const { name, email, subject, message } = req.body;
+
+    // Validate required fields
+    if (!name || !email || !subject || !message) {
+      console.log('Missing required fields in request body');
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    console.log('Creating Gmail transporter...');
 
     // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
@@ -51,6 +61,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       },
     });
 
+    console.log('Testing SMTP connection...');
+    
+    // Test the connection
+    try {
+      await transporter.verify();
+      console.log('SMTP connection verified successfully');
+    } catch (error) {
+      console.error('SMTP connection failed:', error);
+      return res.status(500).json({ 
+        error: 'Email server connection failed',
+        details: error instanceof Error ? error.message : 'Unknown SMTP error'
+      });
+    }
+
+    console.log('Preparing notification email...');
+    
     // Email to you (notification)
     const notificationMailOptions = {
       from: gmailUser,
@@ -106,23 +132,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `,
     };
 
-    // Send both emails
-    await Promise.all([
-      transporter.sendMail(notificationMailOptions),
-      transporter.sendMail(confirmationMailOptions),
-    ]);
-
-    console.log(`Email sent successfully from ${name} (${email})`);
+    console.log('Sending emails...');
     
-    return res.status(200).json({ 
-      success: true, 
-      message: 'Email sent successfully!' 
-    });
+    // Send both emails with better error handling
+    try {
+      const [notificationResult, confirmationResult] = await Promise.all([
+        transporter.sendMail(notificationMailOptions),
+        transporter.sendMail(confirmationMailOptions),
+      ]);
+
+      console.log('Notification email sent:', notificationResult.messageId);
+      console.log('Confirmation email sent:', confirmationResult.messageId);
+      console.log(`Email sent successfully from ${name} (${email})`);
+      
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Email sent successfully!' 
+      });
+    } catch (emailError) {
+      console.error('Error sending emails:', emailError);
+      return res.status(500).json({ 
+        error: 'Failed to send email', 
+        details: emailError instanceof Error ? emailError.message : 'Unknown email error' 
+      });
+    }
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Unexpected error:', error);
     return res.status(500).json({ 
-      error: 'Failed to send email', 
+      error: 'Internal server error', 
       details: error instanceof Error ? error.message : 'Unknown error' 
     });
   }
