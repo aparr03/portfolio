@@ -32,9 +32,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const contactEmail = process.env.CONTACT_EMAIL;
 
     console.log('Environment check:', { 
-      gmailUser: gmailUser ? `${gmailUser.substring(0, 3)}***` : 'MISSING',
-      gmailPass: gmailPass ? `${gmailPass.substring(0, 4)}***` : 'MISSING',
-      contactEmail: contactEmail ? `${contactEmail.substring(0, 3)}***` : 'MISSING'
+      gmailUser: gmailUser ? `${gmailUser.substring(0, Math.min(3, gmailUser.length))}***` : 'MISSING',
+      gmailPass: gmailPass ? `${gmailPass.substring(0, Math.min(4, gmailPass.length))}***` : 'MISSING',
+      contactEmail: contactEmail ? `${contactEmail.substring(0, Math.min(3, contactEmail.length))}***` : 'MISSING'
     });
 
     if (!gmailUser || !gmailPass || !contactEmail) {

@@ -20,22 +20,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const gmailPass = process.env.GMAIL_PASS;
     const contactEmail = process.env.CONTACT_EMAIL;
 
-    const envStatus = {
-      GMAIL_USER: gmailUser ? `${gmailUser.substring(0, 3)}***@${gmailUser.split('@')[1]}` : 'MISSING',
-      GMAIL_PASS: gmailPass ? `${gmailPass.substring(0, 4)}${'*'.repeat(gmailPass.length - 4)}` : 'MISSING',
-      CONTACT_EMAIL: contactEmail ? `${contactEmail.substring(0, 3)}***@${contactEmail.split('@')[1]}` : 'MISSING',
-    };
-
     const debugInfo = {
       timestamp: new Date().toISOString(),
       environment: process.env.VERCEL_ENV || 'unknown',
       region: process.env.VERCEL_REGION || 'unknown',
       nodeVersion: process.version,
-      environmentVariables: envStatus,
+      environmentVariables: {
+        GMAIL_USER: gmailUser ? 'SET' : 'MISSING',
+        GMAIL_PASS: gmailPass ? 'SET' : 'MISSING', 
+        CONTACT_EMAIL: contactEmail ? 'SET' : 'MISSING'
+      },
       status: {
         allVariablesPresent: !!(gmailUser && gmailPass && contactEmail),
-        gmailUserValid: gmailUser?.includes('@gmail.com') || false,
-        contactEmailValid: contactEmail?.includes('@') || false,
+        gmailUserHasAt: gmailUser ? gmailUser.includes('@') : false,
+        gmailUserHasGmail: gmailUser ? gmailUser.includes('gmail.com') : false,
+        contactEmailHasAt: contactEmail ? contactEmail.includes('@') : false,
       }
     };
 
@@ -44,14 +43,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({
       success: true,
       debug: debugInfo,
-      recommendations: debugInfo.status.allVariablesPresent ? 
-        ['All environment variables are present'] :
-        [
-          !gmailUser ? 'Set GMAIL_USER environment variable' : null,
-          !gmailPass ? 'Set GMAIL_PASS environment variable' : null,
-          !contactEmail ? 'Set CONTACT_EMAIL environment variable' : null,
-          !debugInfo.status.gmailUserValid ? 'GMAIL_USER should be a @gmail.com address' : null,
-        ].filter(Boolean)
+      message: debugInfo.status.allVariablesPresent ? 
+        'All environment variables are present - check send-email endpoint' :
+        'Missing environment variables - set them in Vercel dashboard'
     });
 
   } catch (error) {
