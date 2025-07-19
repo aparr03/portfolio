@@ -1,18 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import React from 'react';
-import { supabase } from '../../supabase';
-import emailjs from '@emailjs/browser';
-
-// Initialize EmailJS with public key from environment variables
-emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 const Contact = () => {
-  // EmailJS configuration from environment variables
-  const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID; // Notification email to you
-  const emailjsConfirmationTemplateId = import.meta.env.VITE_EMAILJS_CONFIRMATION_TEMPLATE_ID; // Automated Confirmation email to user
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,66 +38,53 @@ const Contact = () => {
     setFormStatus({ submitting: true, success: false, error: false, message: 'Sending...' });
 
     try {
-      // Save to Supabase
-      const { error: dbError } = await supabase.from('messages').insert([
-        { 
-          name: formData.name, 
-          email: formData.email, 
-          subject: formData.subject, 
-          message: formData.message 
-        }
-      ]);
-
-      if (dbError) {
-        throw new Error(`Database error: ${dbError.message}`);
-      }
+      // Check if we're in development mode
+      const isDevelopment = import.meta.env.DEV;
       
-      // Send notification email to site owner
-      const notificationParams = {
-        to_email: 'aparr3@hotmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        reply_to: formData.email,
-      };
-      
-      // Send confirmation email to the user
-      const confirmationParams = {
-        user_name: formData.name,
-        from_name: "Andrew Parr", // Make sure this matches the expected template variable
-        to_name: formData.name,
-        user_email: formData.email,
-        subject: formData.subject,
-        message: formData.message, // Include the message in case it's needed
-        to_email: formData.email,
-        reply_to: 'aparr3@hotmail.com',
-        from_email: 'aparr3@hotmail.com',
-        email: formData.email // Some templates might use email instead of user_email
-      };
-      
-      // Try sending emails one at a time to better identify errors
-      try {
-        // First send notification to site owner
-        console.log('Sending notification email to site owner...');
-        const notificationResult = await emailjs.send(
-          emailjsServiceId, 
-          emailjsTemplateId, 
-          notificationParams
-        );
-        console.log('Notification email sent successfully:', notificationResult);
+      if (isDevelopment) {
+        // Development mode - just log and simulate success
+        console.log('📧 Contact form submission (DEV MODE):');
+        console.log(`From: ${formData.name} <${formData.email}>`);
+        console.log(`Subject: ${formData.subject}`);
+        console.log(`Message: ${formData.message}`);
+        console.log('---');
+        console.log('ℹ️  In production, this would send real emails via Gmail SMTP');
         
-        // Then send confirmation to user
-        console.log('Sending confirmation email to user:', formData.email);
-        const confirmationResult = await emailjs.send(
-          emailjsServiceId, 
-          emailjsConfirmationTemplateId, 
-          confirmationParams
-        );
-        console.log('Confirmation email sent successfully:', confirmationResult);
-      } catch (emailError) {
-        console.error('Error sending emails:', emailError);
-        throw new Error(`Email sending failed: ${emailError instanceof Error ? emailError.message : String(emailError)}`);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Success response
+        setFormStatus({
+          submitting: false,
+          success: true,
+          error: false,
+          message: 'Message sent successfully! (Development mode - check browser console)'
+        });
+        
+        // Reset form
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setLastSubmission(new Date());
+        return;
+      }
+
+      // Production mode - use the API endpoint
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
       }
 
       // Success

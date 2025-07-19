@@ -24,9 +24,7 @@ dist-ssr
 *.sw?
 /public/documents/Parr_Resume_Porfolio.pdf
 
-# Supabase
-/supabase/.temp
-/supabase/functions/*/.env
+
 
 # Environment files
 .env

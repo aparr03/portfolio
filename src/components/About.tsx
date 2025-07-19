@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const skills = [
-    'JavaScript', 'TypeScript', 'React', 'Node.js', 'Supabase', 'Vercel', 
+    'JavaScript', 'TypeScript', 'React', 'Node.js', 'Vercel', 
     'HTML/CSS', 'Tailwind CSS', 'SQL', 'Git',
     'Next.js', 'REST APIs'
   ];
@@ -62,7 +62,7 @@ const About = () => {
               I'm a passionate full-stack developer with a strong focus on building clean, efficient, and user-friendly applications. With a Bachelor's degree in Computer Science and a Minor in IT, I have 3+ years of experience working in development, combining my technical expertise with creative problem-solving.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            My journey in software development has been shaped by hands-on experience in web development, systems analysis, and database management. I have a keen interest in modern front-end frameworks, cloud technologies, and optimizing application performance. Whether it's crafting responsive user interfaces, managing scalable backends, or integrating databases like Supabase, I thrive on turning complex problems into simple, beautiful, and intuitive solutions.
+            My journey in software development has been shaped by hands-on experience in web development, app development, systems analysis, and database management. I have a keen interest in modern front-end frameworks, cloud technologies, and optimizing application performance. Whether it's crafting responsive user interfaces, managing scalable backends, or integrating databases like MongoDB Atlas, I thrive on turning complex problems into simple, beautiful, and intuitive solutions.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
             I'm actively seeking opportunities in web development and software engineering, where I can apply my expertise while continuing to expand my knowledge. If you're looking for a dedicated and versatile developer, let's connect!

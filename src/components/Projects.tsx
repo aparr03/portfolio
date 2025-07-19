@@ -22,8 +22,7 @@ const Projects = () => {
     { name: 'Tailwind CSS', icon: '/images/tailwind_logo.svg', color: '#38B2AC', description: 'Styling framework' },
     { name: 'Framer Motion', icon: '/images/framer-motion_logo.svg', color: '#0055FF', description: 'Animation library' },
     { name: 'Vercel', icon: '/images/vercel_logo.svg', color: '#000000', description: 'Deployment platform' },
-    { name: 'Supabase', icon: '/images/supabase_logo.svg', color: '#3ECF8E', description: 'Backend service' },
-    { name: 'EmailJS', icon: '/images/emailjs_logo.svg', color: '#FF6B6B', description: 'Email service' }
+    { name: 'Node.js', icon: '/images/belt_images/nodejs.svg', color: '#339933', description: 'Server runtime' }
   ];
   
   const projects = [
@@ -57,7 +56,7 @@ const Projects = () => {
       title: 'Parr-4-The-Course',
       description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile or share them with a community.',
       image: '/images/demo_images/p4tc_demo.png',
-      tags: ['React', 'Vite', 'Supabase', 'Node.js', 'Vercel'],
+              tags: ['React', 'Vite', 'Node.js', 'Vercel'],
       category: 'fullstack',
       demoLink: 'https://p4tc.vercel.app/',
       codeLink: 'https://github.com/aparr03/parr-4-the-course',
