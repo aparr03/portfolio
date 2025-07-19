@@ -41,31 +41,6 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: 'Parr-4-The-Course',
-      description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile or share them with a community.',
-      image: '/images/demo_images/p4tc_demo.png',
-      tags: ['React', 'Vite', 'Supabase', 'Node.js', 'Vercel'],
-      category: 'fullstack',
-      demoLink: 'https://p4tc.vercel.app/',
-      codeLink: 'https://github.com/aparr03/parr-4-the-course',
-      color: 'from-violet-500 to-purple-500',
-      noTint: true
-    },
-    {
-      id: 3,
-      title: 'Well-Tasked',
-      description: 'My first take at a task management app. This app allows for users to create an account and upload a bio with a profile picture.',
-      image: '/images/demo_images/welltasked_demo.png',
-      tags: ['React', 'API', 'Chart.js'],
-      category: 'frontend',
-      demoLink: 'https://welltasked.vercel.app/',
-      codeLink: 'https://github.com/aparr03/WellTasked',
-      color: 'from-transparent to-transparent',
-      noTint: true,
-      imageEnhanced: true
-    },
-    {
-      id: 4,
       title: 'The CompLex',
       description: 'Main website for a local sports complex that used to be a warehouse. Features registration, reservations, and a payment system.',
       image: '/images/demo_images/complex_demo.png',
@@ -77,6 +52,31 @@ const Projects = () => {
       noTint: true,
       imageEnhanced: true
     },
+    {
+      id: 3,
+      title: 'Parr-4-The-Course',
+      description: 'A recipe website that allows users to sign in, create new recipes, and save them to their profile or share them with a community.',
+      image: '/images/demo_images/p4tc_demo.png',
+      tags: ['React', 'Vite', 'Supabase', 'Node.js', 'Vercel'],
+      category: 'fullstack',
+      demoLink: 'https://p4tc.vercel.app/',
+      codeLink: 'https://github.com/aparr03/parr-4-the-course',
+      color: 'from-violet-500 to-purple-500',
+      noTint: true
+    },
+    {
+      id: 4,
+      title: 'Well-Tasked',
+      description: 'My first take at a task management app. This app allows for users to create an account and upload a bio with a profile picture.',
+      image: '/images/demo_images/welltasked_demo.png',
+      tags: ['React', 'API', 'Chart.js'],
+      category: 'frontend',
+      demoLink: 'https://welltasked.vercel.app/',
+      codeLink: 'https://github.com/aparr03/WellTasked',
+      color: 'from-transparent to-transparent',
+      noTint: true,
+      imageEnhanced: true
+    }    
   ];
 
   const filters = [
