@@ -5,11 +5,14 @@ import Resume from './components/Resume';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import LogoMarquee from './components/LogoMarquee';
+import { useScrollSpyWithSEO } from './hooks/useScrollSpy';
 import './App.css';
 import './index.css';
 
-
 function App() {
+  // Automatically update SEO based on which section is currently in view
+  const currentSection = useScrollSpyWithSEO();
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden" style={{background: 'linear-gradient(to bottom right, #eef2ff, #ffffff)'}}>
       <Navbar />
