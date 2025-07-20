@@ -11,7 +11,7 @@ import './index.css';
 
 function App() {
   // Automatically update SEO based on which section is currently in view
-  const currentSection = useScrollSpyWithSEO();
+  useScrollSpyWithSEO(); // Auto-updates SEO based on scroll position
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden" style={{background: 'linear-gradient(to bottom right, #eef2ff, #ffffff)'}}>
