@@ -7,6 +7,19 @@ const Resume = () => {
   const experience = [
     {
       id: 1,
+      title: 'Associate Software Engineer',
+      company: 'Consumers Energy',
+      period: 'Sept 2025 - Present',
+      achievements: [
+        'Develop and maintain test-driven applications using .NET, C#, and Angular in a large-scale enterprise environment',
+        'Build and support React, Python, and SQL solutions within the Applications & Analytics department.',
+        'Apply clean code principles, version control, and structured pipelines to improve performance and maintainability',
+        'Collaborate with cross-functional teams to deliver reliable, scalable software for internal business systems.'
+      ],
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      id: 2,
       title: 'Systems Analyst',
       company: 'Central Michigan University',
       period: 'Nov 2022 - Present',
@@ -19,7 +32,7 @@ const Resume = () => {
       color: 'from-purple-500 to-violet-500'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Data Analyst',
       company: 'Towbook',
       period: 'May 2021 - July 2022',
