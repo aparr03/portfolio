@@ -59,13 +59,13 @@ const About = () => {
           >
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Hello, I'm <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent dark:from-indigo-400 dark:to-violet-400">Andrew Parr</span></h3>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              I'm a passionate full-stack developer with a strong focus on building clean, efficient, and user-friendly applications. With a Bachelor's degree in Computer Science and a Minor in IT, I have 3+ years of experience working in development, combining my technical expertise with creative problem-solving.
+              I'm an Associate Software Engineer at <span className="font-semibold text-indigo-600 dark:text-indigo-400">Consumers Energy</span>, where I develop and maintain test-driven applications using .NET, C#, and Angular in a large-scale enterprise environment. I build and support React, Python, and SQL solutions within the Applications & Analytics department, applying clean code principles, version control, and structured pipelines to improve performance and maintainability. I collaborate with cross-functional teams to deliver reliable, scalable software for internal business systems.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            My journey in software development has been shaped by hands-on experience in web development, app development, systems analysis, and database management. I have a keen interest in modern front-end frameworks, cloud technologies, and optimizing application performance. Whether it's crafting responsive user interfaces, managing scalable backends, or integrating databases like MongoDB Atlas, I thrive on turning complex problems into simple, beautiful, and intuitive solutions.
+              I hold a Bachelor's degree in Computer Science with a Minor in IT from Central Michigan University, and have 3+ years of professional experience in software development. My background includes full-stack development, systems analysis, and database management, combining technical expertise with creative problem-solving to build clean, efficient, and user-friendly applications.
             </p>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            I'm actively seeking opportunities in web development and software engineering, where I can apply my expertise while continuing to expand my knowledge. If you're looking for a dedicated and versatile developer, let's connect!
+              I'm passionate about modern web technologies and have developed several projects showcasing my skills in React, Node.js, TypeScript, and cloud platforms like Vercel. Whether it's crafting responsive user interfaces, managing scalable backends, or optimizing application performance, I thrive on turning complex problems into simple, beautiful, and intuitive solutions.
             </p>
 
             <div>

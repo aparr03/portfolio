@@ -85,6 +85,17 @@ const Projects = () => {
     { name: 'Full Stack', value: 'fullstack' },
   ];
 
+  // Get categories that have at least one project
+  const getAvailableFilters = () => {
+    const availableCategories = new Set(projects.map(project => project.category));
+    
+    return filters.filter(filter => 
+      filter.value === 'all' || availableCategories.has(filter.value)
+    );
+  };
+
+  const availableFilters = getAvailableFilters();
+
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
@@ -119,7 +130,7 @@ const Projects = () => {
 
         {/* Filter buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((filter, index) => (
+          {availableFilters.map((filter, index) => (
             <motion.button
               key={index}
               onClick={() => setActiveFilter(filter.value)}
