@@ -2,9 +2,8 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const skills = [
-    'JavaScript', 'TypeScript', 'React', 'Node.js', 'Vercel', 
-    'HTML/CSS', 'Tailwind CSS', 'SQL', 'Git',
-    'Next.js', 'REST APIs'
+    'C#', '.NET', 'TypeScript', 'Angular', 'Node.js', 'CI/CD', 'TDD',  
+    'HTML/CSS', 'SQL', 'Git', 'Next.js', 'REST APIs', 'Vercel'
   ];
 
   return (
