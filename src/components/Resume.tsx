@@ -22,7 +22,7 @@ const Resume = () => {
       id: 2,
       title: 'Systems Analyst',
       company: 'Central Michigan University',
-      period: 'Nov 2022 - Present',
+      period: 'Nov 2022 - May 2025',
       achievements: [
         'Provided technical support for Microsoft 365, Blackboard, DUO MFA, and SAP for students and faculty',
         'Resolved authentication, database access, and system configuration issues via phone, chat, and email',

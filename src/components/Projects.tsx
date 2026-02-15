@@ -28,6 +28,19 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: 'The CompLex',
+      description: 'Main website for a local sports complex that used to be a warehouse. Features registration, reservations, and a payment system.\n\nNote: backend takes a minute to wake up since it is on a free tier, but it is fully functional!',
+      image: '/images/demo_images/complex_demo.png',
+      tags: ['React', 'Scheduler', 'Vercel'],
+      category: 'frontend',
+      demoLink: 'https://the-complex.vercel.app/',
+      codeLink: 'https://github.com/aparr03/the-complex',
+      color: 'from-transparent to-transparent',
+      noTint: true,
+      imageEnhanced: true
+    },
+    {
+      id: 2,
       title: 'Tymelyne',
       description: 'A mobile app using openAI to generate tailored learning paths for users.',
       image: '/images/demo_images/tymelyne_demo.png',
@@ -37,19 +50,6 @@ const Projects = () => {
       codeLink: 'https://github.com/marcdejesus/tymelyne',
       color: 'from-indigo-500 to-blue-500',
       noTint: true
-    },
-    {
-      id: 2,
-      title: 'The CompLex',
-      description: 'Main website for a local sports complex that used to be a warehouse. Features registration, reservations, and a payment system.',
-      image: '/images/demo_images/complex_demo.png',
-      tags: ['React', 'Scheduler', 'Vercel'],
-      category: 'frontend',
-      demoLink: 'https://the-complex.vercel.app/',
-      codeLink: 'https://github.com/aparr03/the-complex',
-      color: 'from-transparent to-transparent',
-      noTint: true,
-      imageEnhanced: true
     },
     {
       id: 3,
@@ -202,7 +202,7 @@ const Projects = () => {
                 </div>
               </div>
               <div className="p-6 flex-grow flex flex-col bg-white dark:bg-gray-800">
-                <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{project.description}</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow whitespace-pre-line">{project.description}</p>
                 <div className="flex justify-between mt-auto">
                   <motion.a
                     href={project.demoLink}
